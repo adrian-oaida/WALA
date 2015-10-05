@@ -46,7 +46,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.ibm.wala.analysis.typeInference.ConeType;
 import com.ibm.wala.analysis.typeInference.PrimitiveType;
@@ -85,6 +87,7 @@ import com.ibm.wala.util.strings.Atom;
  *  @author Tobias Blaschke <code@tobiasblaschke.de>
  */
 public class Instantiator implements IInstantiator {
+    private static final Logger logger = LoggerFactory.getLogger(Instantiator.class);
 
     final IClassHierarchy cha;
     final VolatileMethodSummary body;
@@ -104,8 +107,8 @@ public class Instantiator implements IInstantiator {
     }
 
     private boolean isExcluded(IClass cls) {
-        if (this.analysisScope.getExclusions().contains(cls.getName().toString())) {   // XXX FUUUUU
-            
+        if (this.analysisScope.getExclusions() != null && this.analysisScope.getExclusions().contains(cls.getName().toString())) {   // XXX FUUUUU
+            logger.info("Hit exclusions with {}", cls);
             return true;
         } else {
             return false;
@@ -130,14 +133,14 @@ public class Instantiator implements IInstantiator {
             throw new IllegalArgumentException("Can't create an instance of null");
         }
         if (seen == null) {
-            
+            logger.debug("Empty seen");
             seen = new HashSet<SSAValue>();
         }
 
         { // Special type?
-            final SpecializedInstantiator sInst = new SpecializedInstantiator(body, instructionFactory, pm,
-                    cha, scope, analysisScope, this);
-            if (sInst.understands(T)) {
+            if (SpecializedInstantiator.understands(T)) {
+                final SpecializedInstantiator sInst = new SpecializedInstantiator(body, instructionFactory, pm,
+                        cha, scope, analysisScope, this);
                 return sInst.createInstance(T, asManaged, key, seen);
             }
         }
@@ -177,10 +180,10 @@ public class Instantiator implements IInstantiator {
                         pm.setAllocation(instance, getInst);
                         return instance;
                     } else {
-                        
+                        logger.info("NEW Component {} \n\tbreadCrumb: {}", instance, pm.breadCrumb);
                     }
                 } else {
-                    
+                    logger.info("NEW Component {} \n\tbreadCrumb: {}", instance, pm.breadCrumb);
                 }
             }
         } // */
@@ -190,9 +193,9 @@ public class Instantiator implements IInstantiator {
             return instance;
         } else if (klass == null) {
             if (! T.getName().toString().startsWith("Landroid/")) {
-                
+                logger.error("The Type {} is not in the ClassHierarchy! Returning null as instance", T);
             } else {
-                
+                logger.debug("The Type {} is not in the ClassHierarchy! Returning null as instance", T);
             }
             this.body.addConstant(instance.getNumber(), new ConstantValue(null));
             instance.setAssigned();
@@ -205,7 +208,7 @@ public class Instantiator implements IInstantiator {
         
         final Set<TypeReference> types = getTypes(T);  
 
-        
+        logger.info("Creating instance of {} is  {}", T, types);
         if (types.isEmpty()) {
             throw new IllegalStateException("Types of " + T + " are empty");
         }
@@ -221,7 +224,7 @@ public class Instantiator implements IInstantiator {
             assert(newInst.getDef() == instance.getNumber());
             return instance;
         } else if (klass.isArrayClass()) {      
-            
+            logger.info("Creating Array-Class {}", klass.toString());
 
             final TypeReference payloadType = T.getArrayElementType();
             SSAValue payload = null;
@@ -229,7 +232,7 @@ public class Instantiator implements IInstantiator {
                 for (final SSAValue see : seen) {
                     if (ParameterAccessor.isAssignable(see.getType(), payloadType, this.cha)) {
                         // Happens on Array of interfaces
-                        
+                        logger.trace("Reusing {} for array payload {}", see, payload);
                         payload = see;
                     }
                 }
@@ -268,7 +271,7 @@ public class Instantiator implements IInstantiator {
             return instance;
         } else {
             // Abstract, Interface or array
-            
+            logger.debug("Not a regular class {}", T);
             final Set<SSAValue> subInstances = new HashSet<SSAValue>();
             for (final TypeReference type : types) {
                 final IClass subKlass = this.cha.lookupClass(type);
@@ -331,7 +334,7 @@ public class Instantiator implements IInstantiator {
                         this.pm.setPhi(instance, phi);
                     }
                 } else {
-                    
+                    logger.warn("No sub-instances for: {} - setting to null", instance);
                     this.body.addConstant(instance.getNumber(), new ConstantValue(null));
                     instance.setAssigned();
                 }
@@ -400,7 +403,7 @@ public class Instantiator implements IInstantiator {
         final IMethod cTor = lookupConstructor(val.getType());
         final ParameterAccessor ctorAcc = new ParameterAccessor(cTor);
         assert (ctorAcc.hasImplicitThis()) : "CTor detected as not having implicit this pointer";
-        
+        logger.debug("Acc for: %", this.scope);
         final ParameterAccessor acc = new ParameterAccessor(this.scope, false); // TODO pm needs a connectThrough too!
                                                                 // TODO false is false
         // TODO: The overrides may lead to use before definition
@@ -413,8 +416,8 @@ public class Instantiator implements IInstantiator {
         seen.add(nullSelf);
         seen.addAll(overrides);
         
-        
-        
+        logger.debug("Recursing for: {}", cTor);
+        logger.debug("With seen: {}", seen);
         final List<SSAValue> ctorParams = acc.connectThrough(ctorAcc, overrides, /* defaults */ null, this.cha, 
                 this, /* managed */ false, /* key */ null, seen); // XXX This starts the recursion!
         addCallCtor(val, cTor.getReference(), ctorParams);
@@ -440,18 +443,19 @@ public class Instantiator implements IInstantiator {
      *  Used internally to avoid endless recursion on getTypes().
      */
     private Set<TypeReference> getTypes(final TypeReference T, final Set<TypeReference> seen) {
+        logger.debug("getTypes({}, {})", T, seen);
         final Set<TypeReference> ret = new HashSet<TypeReference>();
         ret.add(T);
        
         if (T.isPrimitiveType()) {
-            
+            logger.warn("getTypes called on a primitive");
             return ret;
             //throw new IllegalArgumentException("Not you that call primitive type on :P");
         }
 
         final IClass cls = this.cha.lookupClass(T);
         if (cls == null) {
-            
+            logger.error("The type {} is not in the ClassHierarchy - try continuing anyway", T);
             return ret;
             //throw new IllegalArgumentException("The type " + T + " is not in the ClassHierarchy");
         } else if (isExcluded(cls)) {
@@ -465,9 +469,9 @@ public class Instantiator implements IInstantiator {
             if (impls.isEmpty()) {
                 //throw new IllegalStateException("The interface " + T + " has no known implementors");
                 if (! T.getName().toString().startsWith("Landroid/")) {
-                    
+                    logger.error("The interface {} has no known implementors - skipping over it", T);
                 } else {
-                    
+                    logger.debug("The interface {} has no known implementors - skipping over it", T);
                 }
                 return ret; // XXX: This is a bad idea?
             } else {
@@ -487,7 +491,7 @@ public class Instantiator implements IInstantiator {
             } else {
                 for (final IClass sub: subs) {
                     if (seen.contains(sub.getReference())) {
-                        
+                        logger.debug("Seen: {}", sub);
                         continue;
                     }
                     if (sub.isAbstract()) {
@@ -572,7 +576,7 @@ public class Instantiator implements IInstantiator {
         final IMethod method = methods.iterator().next();
         assert (method.isInit());
         final SSAInstruction firstInstruction = this.cache.getIR(method).iterateAllInstructions().next();
-        
+        logger.debug("First instruction of ctor is: " + firstInstruction);
         if (firstInstruction instanceof SSAAbstractInvokeInstruction) {
             final SSAAbstractInvokeInstruction invokation = (SSAAbstractInvokeInstruction) firstInstruction;
             return invokation.isSpecial(); // Always?
@@ -644,12 +648,12 @@ public class Instantiator implements IInstantiator {
                 score = candidScore;
             }
 
-            
+            logger.debug("CTor {} got score {}", im, candidScore);
 
         }
 
         if (ctor == null) {
-            
+            logger.warn("Still found no CTor for {}", T);
             return cha.resolveMethod(klass, MethodReference.initSelector);
         } else {
             return ctor;

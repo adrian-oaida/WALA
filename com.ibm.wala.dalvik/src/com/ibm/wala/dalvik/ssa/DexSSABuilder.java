@@ -389,8 +389,9 @@ public class DexSSABuilder extends AbstractIntRegisterMachine {
          * If we've already created the current instruction, return the value number def'ed by the current instruction. Else, create a
          * new symbol.
          */
+
         private int reuseOrCreateDef() {
-            if (getCurrentInstruction() == null) {
+            if (getCurrentInstruction() == null || !getCurrentInstruction().hasDef()) {
                 return symbolTable.newSymbol();
             } else {
                 return getCurrentInstruction().getDef();
@@ -766,7 +767,7 @@ public class DexSSABuilder extends AbstractIntRegisterMachine {
              */
             @Override
             public void visitGoto(Goto instruction) {
-                emitInstruction(insts.GotoInstruction(getCurrentInstructionIndex(), -1));
+                emitInstruction(insts.GotoInstruction(getCurrentInstructionIndex(), instruction.destination));
             }
 
             /**
@@ -855,7 +856,7 @@ public class DexSSABuilder extends AbstractIntRegisterMachine {
 
                 if(m.getReturnType().equals(TypeReference.Void))
                 {
-                    SSAInstruction inst = insts.InvokeInstruction(getCurrentInstructionIndex(), params, exc, site);
+                    SSAInstruction inst = insts.InvokeInstruction(getCurrentInstructionIndex(), params, exc, site, null);
                     //System.out.println("Emitting(1) InvokeInstruction: "+inst);
                     emitInstruction(inst);
                 } else {
@@ -867,7 +868,7 @@ public class DexSSABuilder extends AbstractIntRegisterMachine {
                     int dest = dexCFG.getDexMethod().getReturnReg();
 
                     setLocal(dest, result);
-                    SSAInstruction inst = insts.InvokeInstruction(getCurrentInstructionIndex(), result, params, exc, site);
+                    SSAInstruction inst = insts.InvokeInstruction(getCurrentInstructionIndex(), result, params, exc, site, null);
                     //System.out.println("Emitting(2) InvokeInstruction: "+inst);
                     emitInstruction(inst);
                 }
