@@ -6,6 +6,7 @@
 */bin/*
 *~
 .metadata/
+com.ibm.wala.cast/lib/
 com.ibm.wala.cast.java.jdt.test/
 com.ibm.wala.cast.java.polyglot/lib/
 com.ibm.wala.cast.java.test.data/src/JLex/
@@ -26,6 +27,7 @@ com.ibm.wala.cast.js/lib/
 com.ibm.wala.core.testdata/*.jar
 com.ibm.wala.core.testdata/@dot/
 com.ibm.wala.core.testdata/lib/
+com.ibm.wala.core.testdata/ocaml/
 com.ibm.wala.core.tests/dat/wala.examples.properties
 com.ibm.wala.core.tests/report
 com.ibm.wala.core/@dot
