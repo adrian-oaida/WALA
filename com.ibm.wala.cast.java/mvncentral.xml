@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.ibm.wala</groupId>
-  <artifactId>com.ibm.wala.cast</artifactId>
+  <artifactId>com.ibm.wala.cast.java</artifactId>
   <version>1.3.10-SNAPSHOT</version>  
   <packaging>jar</packaging>
   <name>WALA CAst</name>
-  <description>WALA Common AST core library</description>
+  <description>WALA Common AST core Java front-end functionality</description>
   <url>http://wala.sourceforge.net</url>
   <licenses>
     <license>
@@ -31,7 +31,7 @@
   </scm>
 
   <properties>
-    <src.dir>source/java</src.dir>
+    <src.dir>src</src.dir>
   </properties>
 
   <distributionManagement>
@@ -44,6 +44,11 @@
   <dependencies>
     <dependency>
       <groupId>com.ibm.wala</groupId>
+      <artifactId>com.ibm.wala.cast</artifactId>
+      <version>1.3.10-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.wala</groupId>
       <artifactId>com.ibm.wala.core</artifactId>
       <version>1.3.10-SNAPSHOT</version>
     </dependency>
@@ -51,11 +56,6 @@
       <groupId>com.ibm.wala</groupId>
       <artifactId>com.ibm.wala.shrike</artifactId>
       <version>1.3.10-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>2.4</version>
     </dependency>
   </dependencies>
 
