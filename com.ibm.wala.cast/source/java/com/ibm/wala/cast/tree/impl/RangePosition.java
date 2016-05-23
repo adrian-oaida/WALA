@@ -8,35 +8,37 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package com.ibm.wala.cast.tree.impl;
+package com.ibm.wala.cast.js.translator;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 
+import org.apache.commons.io.IOUtils;
+
 import com.ibm.wala.cast.tree.CAstSourcePositionMap.Position;
+import com.ibm.wala.cast.tree.impl.AbstractSourcePosition;
 
 public class RangePosition extends AbstractSourcePosition implements Position {
+  private final static int TABSIZE = 4;
   private final URL url;
-  private final int startLine;
-  private final int endLine;
+  private final int line;
   private final int startOffset;
   private final int endOffset;
-  
-  public RangePosition(URL url, int startLine, int endLine, int startOffset, int endOffset) {
+
+  private int col = -1;
+  private int lastLine = -1;
+  private int lastCol = -1;
+
+  public RangePosition(URL url, int line, int startOffset, int endOffset) {
     super();
     this.url = url;
-    this.startLine = startLine;
-    this.endLine = endLine;
+    this.line = line;
     this.startOffset = startOffset;
     this.endOffset = endOffset;
   }
 
-  public RangePosition(URL url, int line, int startOffset, int endOffset) {  
-    this(url, line, -1, startOffset, endOffset);
-  }
-  
   @Override
   public int compareTo(Object o) {
     Position other = (Position) o;
@@ -49,22 +51,79 @@ public class RangePosition extends AbstractSourcePosition implements Position {
 
   @Override
   public int getFirstLine() {
-    return startLine;
+    return line;
   }
 
   @Override
   public int getLastLine() {
-    return endLine;
+    if (lastLine == -1) {
+      String content;
+      Reader reader = null;
+      try {
+        reader = getReader();
+        content = IOUtils.toString(reader).substring(startOffset, endOffset);
+        int nrOfNewlines = content.length() - content.replace("\n", "").length();
+        lastLine = line + nrOfNewlines;
+      } catch (IOException e) {
+        e.printStackTrace();
+      } finally {
+        IOUtils.closeQuietly(reader);
+      }
+    }
+
+    return lastLine;
   }
 
   @Override
   public int getFirstCol() {
-    return -1;
+    if (col == -1) {
+      col = getCol(getFirstLine(), startOffset);
+    }
+
+    return col;
   }
 
   @Override
   public int getLastCol() {
-    return -1;
+    if (lastCol == -1) {
+      lastCol = getCol(getLastLine(), endOffset);
+    }
+
+    return lastCol;
+  }
+
+  private int getCol(int line, int offset) {
+    int col = -1;
+    Reader reader = null;
+    try {
+      reader = getReader();
+      col = getCol(IOUtils.toString(reader), line, offset);
+    } catch (IOException e) {
+      e.printStackTrace();
+    } finally {
+      IOUtils.closeQuietly(reader);
+    }
+
+    return col;
+  }
+
+  public static int getCol(String content, int line, int offset) {
+    if (line == 1) {
+      return offset + 1;
+    }
+    int pos = -1;
+    for (int i = 0; i < line - 1; i++) {
+      pos = content.indexOf('\n', pos + 1);
+    }
+
+    try {
+      String lineBeginning = content.substring(pos, offset);
+      int nrOfTabs = lineBeginning.length() - lineBeginning.replace("\t", "").length();
+      return offset - pos + (TABSIZE - 1) * nrOfTabs;
+    } catch (StringIndexOutOfBoundsException e) {
+      e.printStackTrace();
+      return -1;
+    }
   }
 
   @Override
