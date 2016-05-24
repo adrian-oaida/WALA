@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
-import com.ibm.wala.cast.ir.ssa.AstIRFactory.AstIR;
+import com.ibm.wala.cast.ir.ssa.AstIR;
 import com.ibm.wala.cast.ir.ssa.analysis.LiveAnalysis;
 import com.ibm.wala.cast.loader.AstMethod;
 import com.ibm.wala.cast.loader.AstMethod.DebuggingInformation;

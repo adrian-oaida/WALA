@@ -22,7 +22,7 @@ import com.ibm.wala.cast.ir.ssa.AstAssertInstruction;
 import com.ibm.wala.cast.ir.ssa.AstEchoInstruction;
 import com.ibm.wala.cast.ir.ssa.AstGlobalRead;
 import com.ibm.wala.cast.ir.ssa.AstGlobalWrite;
-import com.ibm.wala.cast.ir.ssa.AstIRFactory.AstIR;
+import com.ibm.wala.cast.ir.ssa.AstIR;
 import com.ibm.wala.cast.ir.ssa.AstInstructionVisitor;
 import com.ibm.wala.cast.ir.ssa.AstIsDefinedInstruction;
 import com.ibm.wala.cast.ir.ssa.AstLexicalAccess;

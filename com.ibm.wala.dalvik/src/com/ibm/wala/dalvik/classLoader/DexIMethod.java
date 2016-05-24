@@ -61,6 +61,7 @@ import static org.jf.dexlib.Util.AccessFlags.VOLATILE;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -183,7 +184,7 @@ public class DexIMethod implements IBytecodeMethod {
 	
 	protected InstructionArray instructions;
 
-
+	private Map<Integer, Integer> lineNumbers = new HashMap<Integer, Integer>();
 
 	private static int totalInsts = 0;
 
@@ -536,6 +537,16 @@ public class DexIMethod implements IBytecodeMethod {
 		return getReference().getName();
 	}
 
+	public int getCodeLineNumber(int bcIndex) {
+		if(lineNumbers.containsKey(bcIndex))
+			return lineNumbers.get(bcIndex);
+		else 
+			return -1;
+	}
+
+	public void setCodeLineNumber(int bcIndex, int lineNumber) {
+		lineNumbers.put(bcIndex, lineNumber);
+	}
 	public int getLineNumber(int bcIndex) {
 		return getInstructionIndex(bcIndex);
 	}
