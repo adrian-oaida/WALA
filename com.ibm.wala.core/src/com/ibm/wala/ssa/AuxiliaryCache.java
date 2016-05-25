@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.ssa;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -30,7 +31,7 @@ import com.ibm.wala.util.ref.CacheReference;
  * 
  * This doesn't work very well ... GCs don't do such a great job with SoftReferences ... revamp it.
  */
-class AuxiliaryCache {
+class AuxiliaryCache implements Serializable{
 
   /**
    * A mapping from IMethod -> SSAOptions -> SoftReference -> IR

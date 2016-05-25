@@ -40,6 +40,7 @@
  */
 package com.ibm.wala.dalvik.ipa.callgraph.impl;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 import com.ibm.wala.classLoader.IMethod;
@@ -130,7 +131,7 @@ public class AndroidEntryPoint extends DexEntryPoint {
      *  Currently only AndroidEntryPoints are supportet directly. If you want to add other stuff you might want
      *  to subclass AbstractAndroidModel.
      */
-    public interface IExecutionOrder extends Comparable<IExecutionOrder>{
+    public interface IExecutionOrder extends Comparable<IExecutionOrder>, Serializable{
         /**
          *  Returns an integer-representation of the ExecutionOrder.
          */

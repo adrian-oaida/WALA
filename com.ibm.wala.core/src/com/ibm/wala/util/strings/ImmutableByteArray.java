@@ -10,10 +10,12 @@
  *******************************************************************************/
 package com.ibm.wala.util.strings;
 
+import java.io.Serializable;
+
 /**
  * A read-only byte array.
  */
-public final class ImmutableByteArray {
+public final class ImmutableByteArray implements Serializable{
 
   // allow "friends" in this package to access
   final byte[] b;

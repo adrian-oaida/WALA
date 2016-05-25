@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.ssa;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import com.ibm.wala.util.collections.HashMapFactory;
@@ -22,7 +23,7 @@ import com.ibm.wala.util.debug.Assertions;
  * 
  * This class is used heavily during SSA construction by {@link SSABuilder}.
  */
-public class SymbolTable implements Cloneable {
+public class SymbolTable implements Cloneable, Serializable {
 
   private final static int MAX_VALUE_NUMBER = Integer.MAX_VALUE / 4;
 

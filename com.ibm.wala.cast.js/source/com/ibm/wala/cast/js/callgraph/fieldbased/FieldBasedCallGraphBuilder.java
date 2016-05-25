@@ -10,6 +10,7 @@
  *****************************************************************************/
 package com.ibm.wala.cast.js.callgraph.fieldbased;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -64,7 +65,7 @@ import com.ibm.wala.util.intset.OrdinalSet;
  * @author mschaefer
  *
  */
-public abstract class FieldBasedCallGraphBuilder {
+public abstract class FieldBasedCallGraphBuilder implements Serializable{
 	// class hierarchy of the program to be analysed
 	protected final IClassHierarchy cha;
 	

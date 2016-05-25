@@ -10,9 +10,11 @@
  *******************************************************************************/
 package com.ibm.wala.cast.js.html;
 
+import java.io.Serializable;
+
 import com.ibm.wala.cast.tree.CAstSourcePositionMap.Position;
 
-public interface FileMapping {
+public interface FileMapping extends Serializable{
 
   /**
    * @param line

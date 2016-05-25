@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.ssa;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -23,7 +24,7 @@ import com.ibm.wala.util.intset.MutableIntSet;
 /**
  * An object which represent Def-Use information for an SSA {@link IR}
  */
-public class DefUse {
+public class DefUse implements Serializable{
   static final boolean DEBUG = false;
 
   /**

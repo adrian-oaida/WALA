@@ -159,10 +159,16 @@ import com.ibm.wala.util.strings.ImmutableByteArray;
 public class DexIMethod implements IBytecodeMethod {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5761194750595862628L;
+
+	/**
 	 * The EncodedMethod object for which this DexIMethod is a wrapper.
 	 */
-	private final EncodedMethod eMethod;
-
+	transient private final EncodedMethod eMethod;
+//   either ignore this
+//   or, custom dexlib build, and de
 	/**
 	 * The declaring class for this method.
 	 */
@@ -913,6 +919,11 @@ public class DexIMethod implements IBytecodeMethod {
 							+ inst.opcode.toString() + inst.getFormat());
 				default:
 					instructions.add(new Instruction(currentCodeAddress, Opcode.NOP, this) {
+						/**
+						 * 
+						 */
+						private static final long serialVersionUID = -3142521211806857632L;
+
 						@Override
 						public void visit(Visitor visitor) {
 							// no op

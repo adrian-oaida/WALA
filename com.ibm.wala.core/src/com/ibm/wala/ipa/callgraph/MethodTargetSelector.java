@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.ibm.wala.ipa.callgraph;
 
+import java.io.Serializable;
+
 import com.ibm.wala.classLoader.CallSiteReference;
 import com.ibm.wala.classLoader.IClass;
 import com.ibm.wala.classLoader.IMethod;
@@ -28,7 +30,7 @@ import com.ibm.wala.classLoader.IMethod;
  * otherwise delegate to a child selector. When registering with the AnalysisOptions object, make the child selector be whatever the
  * options object had before.
  */
-public interface MethodTargetSelector {
+public interface MethodTargetSelector extends Serializable{
 
   /**
    * Given a calling node, a call site and (optionally) a dispatch type, return the target method to be called.

@@ -30,7 +30,7 @@ import com.ibm.wala.util.ref.CacheReference;
  */
 public class JarFileModule implements Module {
 
-  private final JarFile file;
+  transient private final JarFile file;
 
   /**
    * For efficiency, try to cache the byte[] holding each ZipEntries contents; this will help avoid multiple unzipping

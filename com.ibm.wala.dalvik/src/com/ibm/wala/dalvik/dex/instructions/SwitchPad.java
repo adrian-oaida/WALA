@@ -48,7 +48,9 @@
 
 package com.ibm.wala.dalvik.dex.instructions;
 
-public interface SwitchPad {
+import java.io.Serializable;
+
+public interface SwitchPad extends Serializable{
 
     public int[] getOffsets();
     public int[] getValues();

@@ -10,12 +10,14 @@
  *******************************************************************************/
 package com.ibm.wala.ssa;
 
+import java.io.Serializable;
+
 /**
  * Representation of a particular value which appears in an SSA IR. 
  * 
  * Clients probably shouldn't use this; it's only public (for now) due to Java's package-based weak module system.
  */
-public interface Value {
+public interface Value extends Serializable {
 
   /**
    * Is this value a string constant?

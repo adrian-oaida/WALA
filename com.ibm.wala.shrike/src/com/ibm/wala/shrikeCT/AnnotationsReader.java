@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.shrikeCT;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -76,7 +77,7 @@ public class AnnotationsReader extends AttributeReader {
    * 
    */
   @SuppressWarnings("javadoc")
-  public static interface ElementValue {
+  public static interface ElementValue extends Serializable{
   }
 
   /**

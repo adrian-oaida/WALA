@@ -200,7 +200,9 @@ public class MethodHandles {
   }
 
   public static class ContextInterpreterImpl implements SSAContextInterpreter {
-    private final Map<CGNode, SoftReference<IR>> irs = HashMapFactory.make();
+    
+    //TODO revert back to cached hash map
+    private final Map<CGNode, IR> irs = HashMapFactory.make();
 
     @Override
     public Iterator<NewSiteReference> iterateNewSites(CGNode node) {
@@ -254,7 +256,7 @@ public class MethodHandles {
 
     @Override
     public IR getIR(CGNode node) {
-      if (!irs.containsKey(node) || irs.get(node).get() == null) {
+      if (!irs.containsKey(node) || irs.get(node) == null) {
         MethodSummary code = new MethodSummary(node.getMethod().getReference());
         SummarizedMethod m = new SummarizedMethod(node.getMethod().getReference(), code, node.getMethod().getDeclaringClass());
         SSAInstructionFactory insts = node.getMethod().getDeclaringClass().getClassLoader().getLanguage().instructionFactory();
@@ -282,10 +284,10 @@ public class MethodHandles {
           code.addStatement(insts.LoadMetadataInstruction(code.getNextProgramCounter(), 2, TypeReference.JavaLangInvokeMethodType, ref.getDescriptor()));
           code.addStatement(insts.ReturnInstruction(code.getNextProgramCounter(), 2, false));
         }
-        irs.put(node, new SoftReference<IR>(m.makeIR(node.getContext(), SSAOptions.defaultOptions())));
+        irs.put(node, m.makeIR(node.getContext(), SSAOptions.defaultOptions()));
       }
 
-      return irs.get(node).get();
+      return irs.get(node);
     }
 
     @Override

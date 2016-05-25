@@ -11,6 +11,7 @@
 
 package com.ibm.wala.classLoader;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 /**
@@ -18,7 +19,7 @@ import java.util.Iterator;
  * These are persistent (hung onto by {@link ClassLoaderImpl}) .. so,
  * a Module should not hold onto a lot of data.
  */
-public interface Module {
+public interface Module extends Serializable{
 
   /**
    * @return an Iterator of the ModuleEntries in this Module.

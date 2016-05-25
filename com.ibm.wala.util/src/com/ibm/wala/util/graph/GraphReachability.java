@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.util.graph;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 import com.ibm.wala.dataflow.graph.AbstractMeetOperator;
@@ -36,7 +37,7 @@ import com.ibm.wala.util.intset.OrdinalSetMapping;
 /**
  * A dataflow system that computes, for each graph node, the set of "interesting" nodes that are reachable
  */
-public class GraphReachability<T, S> {
+public class GraphReachability<T, S> implements Serializable{
 
   /**
    * Governing graph

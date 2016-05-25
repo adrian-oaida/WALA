@@ -27,7 +27,8 @@ public final class CacheReference {
   private final static byte HARD = 2;
 
   // should be SOFT except during debugging.
-  private final static byte choice = SOFT;
+  // TODO enabled this for serialization
+  private final static byte choice = HARD;
 
   public final static Object make(final Object referent) {
 

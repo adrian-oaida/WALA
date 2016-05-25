@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.ipa.summaries;
 
+import java.util.HashMap;
 import java.util.WeakHashMap;
 
 import com.ibm.wala.classLoader.CallSiteReference;
@@ -27,8 +28,9 @@ import com.ibm.wala.types.TypeReference;
 import com.ibm.wala.util.strings.Atom;
 
 public class LambdaMethodTargetSelector implements MethodTargetSelector {
-
-  private final WeakHashMap<BootstrapMethod, SummarizedMethod> summaries = new WeakHashMap<BootstrapMethod, SummarizedMethod>();
+//TODO, reinstate this
+//  private final WeakHashMap<BootstrapMethod, SummarizedMethod> summaries = new WeakHashMap<BootstrapMethod, SummarizedMethod>();
+  private final HashMap<BootstrapMethod, SummarizedMethod> summaries = new HashMap<BootstrapMethod, SummarizedMethod>();
 
   private final MethodTargetSelector base;
   

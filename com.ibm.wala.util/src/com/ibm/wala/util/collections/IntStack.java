@@ -10,12 +10,13 @@
  *******************************************************************************/
 package com.ibm.wala.util.collections;
 
+import java.io.Serializable;
 import java.util.EmptyStackException;
 
 /**
  * A stack of integer primitives.  This should be more efficient than a java.util.Stack
  */
-public class IntStack {
+public class IntStack implements Serializable{
 
   /**
    * Comment for <code>top</code>

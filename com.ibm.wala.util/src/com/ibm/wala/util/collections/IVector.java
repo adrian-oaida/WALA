@@ -10,12 +10,14 @@
  *******************************************************************************/
 package com.ibm.wala.util.collections;
 
+import java.io.Serializable;
+
 /**
  * simple interface for a vector.
  * 
  * TODO: get rid of this and use java.util.collection.RandomAccess
  */
-public interface IVector<T> extends Iterable<T> {
+public interface IVector<T> extends Iterable<T> , Serializable{
   /*
    * @see com.ibm.wala.util.intset.IntVector#get(int)
    */

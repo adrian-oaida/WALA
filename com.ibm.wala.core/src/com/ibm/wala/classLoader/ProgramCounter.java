@@ -10,11 +10,12 @@
  *******************************************************************************/
 package com.ibm.wala.classLoader;
 
+import java.io.Serializable;
 
 /**
  * Simple object that represents a program counter value (i.e., an instruction in the bytecode)
  */
-public class ProgramCounter {
+public class ProgramCounter implements Serializable{
 
   /**
    * A constant indicating no source line number information is available.

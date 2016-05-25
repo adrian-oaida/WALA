@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.types.annotations;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -28,7 +29,7 @@ import com.ibm.wala.util.collections.Pair;
 /**
  * Represents a member annotation, e.g., Java 5.0 class file annotations
  */
-public class Annotation {
+public class Annotation implements Serializable{
 
   private final TypeReference type;
 

@@ -90,7 +90,7 @@ public class DexIClass extends BytecodeClass<IClassLoader> {
      * Item which contains the class definitions.
      * (compute by DexFile, from the dexLib)
      */
-    private final ClassDefItem classDef;
+    transient private final ClassDefItem classDef;
 
     /**
      * Bitfields of these flags are used to indicate the accessibility and overall properties of classes and class members.

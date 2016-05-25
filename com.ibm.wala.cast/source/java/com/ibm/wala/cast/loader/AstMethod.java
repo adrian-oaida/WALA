@@ -10,6 +10,7 @@
  *****************************************************************************/
 package com.ibm.wala.cast.loader;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Map;
 
@@ -41,7 +42,7 @@ public abstract class AstMethod implements IMethod {
     CAstEntity getEntity();
   }
   
-  public interface DebuggingInformation {
+  public interface DebuggingInformation extends Serializable{
 
     Position getCodeBodyPosition();
 
@@ -55,7 +56,7 @@ public abstract class AstMethod implements IMethod {
    * lexical access information for some entity scope. used during call graph
    * construction to handle lexical accesses.
    */
-  public interface LexicalInformation {
+  public interface LexicalInformation extends Serializable{
 
     /**
      * names possibly accessed in a nested lexical scope, represented as pairs

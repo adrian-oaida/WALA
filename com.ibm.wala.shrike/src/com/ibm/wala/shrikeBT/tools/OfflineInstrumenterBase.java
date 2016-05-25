@@ -50,7 +50,7 @@ public abstract class OfflineInstrumenterBase {
 
   private JarOutputStream outputJar;
 
-  private JarFile cachedJar;
+  transient private JarFile cachedJar;
 
   private File cachedJarFile;
 

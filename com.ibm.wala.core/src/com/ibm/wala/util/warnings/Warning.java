@@ -10,12 +10,14 @@
  *******************************************************************************/
 package com.ibm.wala.util.warnings;
 
+import java.io.Serializable;
+
 import com.ibm.wala.util.debug.Assertions;
 
 /**
  * A warning message. These are ordered first by severity, and then by lexicographic order.
  */
-public abstract class Warning implements Comparable {
+public abstract class Warning implements Comparable,Serializable {
 
   public final static byte MILD = 0;
 

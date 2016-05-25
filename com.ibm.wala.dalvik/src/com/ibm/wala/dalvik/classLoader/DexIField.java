@@ -75,7 +75,7 @@ public class DexIField implements IField {
 /*
  * The EncodedFied object for which this DexIField is a wrapper
  */
-    private final EncodedField eField;
+    transient private final EncodedField eField;
 
     /**
      * The declaring class for this method.

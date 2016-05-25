@@ -10,13 +10,15 @@
  *******************************************************************************/
 package com.ibm.wala.shrikeBT;
 
+import java.io.Serializable;
+
 import com.ibm.wala.shrikeCT.BootstrapMethodsReader.BootstrapMethod;
 
 /**
  * This class provides read-only access to a constant pool. It gets subclassed for each class reader/editor toolkit you want to work
  * with.
  */
-public abstract class ConstantPoolReader {
+public abstract class ConstantPoolReader implements Serializable{
   /**
    * Retrieve the JVM constant pool item type (a Constants.CONSTANT_xxx value). This method should be overriden by a
    * toolkit-specific subclass.

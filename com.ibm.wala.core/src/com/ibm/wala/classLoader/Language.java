@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.classLoader;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
 
@@ -29,7 +30,7 @@ import com.ibm.wala.util.strings.Atom;
  * analyses which can operate over multiple languages.
  *
  */
-public interface Language {
+public interface Language extends Serializable{
 
   /**
    * The canonical {@link Language} implementation for Java

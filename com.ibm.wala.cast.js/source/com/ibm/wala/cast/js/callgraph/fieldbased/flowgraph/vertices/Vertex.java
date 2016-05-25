@@ -10,6 +10,8 @@
  *****************************************************************************/
 package com.ibm.wala.cast.js.callgraph.fieldbased.flowgraph.vertices;
 
+import java.io.Serializable;
+
 /**
  * Class representing a flow graph vertex. Vertices should never be instantiated
  * directly, but rather generated through a {@link VertexFactory}.
@@ -17,6 +19,6 @@ package com.ibm.wala.cast.js.callgraph.fieldbased.flowgraph.vertices;
  * @author mschaefer
  *
  */
-public abstract class Vertex {
+public abstract class Vertex implements Serializable{
 	public abstract <T> T accept(VertexVisitor<T> visitor);
 }

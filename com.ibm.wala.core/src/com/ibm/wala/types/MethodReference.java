@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.types;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import com.ibm.wala.classLoader.Language;
@@ -229,7 +230,7 @@ public final class MethodReference extends MemberReference {
   /**
    * An identifier/selector for methods.
    */
-  protected static class Key {
+  protected static class Key implements Serializable{
     private final TypeReference type;
 
     private final Atom name;

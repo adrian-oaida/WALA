@@ -10,6 +10,7 @@
  *****************************************************************************/
 package com.ibm.wala.cast.js.html;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import com.ibm.wala.cast.tree.CAstSourcePositionMap.Position;
@@ -19,7 +20,7 @@ import com.ibm.wala.util.collections.Pair;
  * @author danielk
  * Data structure representing an HTML tag, with its attributes and content. Used by the HTML parser when calling the callback.
  */
-public interface ITag {
+public interface ITag extends Serializable{
 
 	/**
 	 * @return tag's name (e.g., "HEAD" / "HTML" / "FORM")

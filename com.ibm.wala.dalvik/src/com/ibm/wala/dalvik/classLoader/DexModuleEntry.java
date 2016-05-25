@@ -57,7 +57,7 @@ import com.ibm.wala.classLoader.ModuleEntry;
 
 public class DexModuleEntry implements ModuleEntry {
 
-    private final ClassDefItem classDefItem;
+    transient private final ClassDefItem classDefItem;
     private final String className;
 
     public DexModuleEntry(ClassDefItem cdefitems) {

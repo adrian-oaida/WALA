@@ -266,11 +266,13 @@ public class CHACallGraph extends BasicCallGraph<CHAContextInterpreter> {
   @Override
   protected NumberedEdgeManager<CGNode> getEdgeManager() {
     return new NumberedEdgeManager<CGNode>() {
-      private final Map<CGNode, SoftReference<Set<CGNode>>> predecessors = HashMapFactory.make();
+      //TODO reinstate cache with softreference
+//      private final Map<CGNode, SoftReference<Set<CGNode>>> predecessors = HashMapFactory.make();
+      private final Map<CGNode, Set<CGNode>> predecessors = HashMapFactory.make();
       
       private Set<CGNode> getPreds(CGNode n) {
-        if (predecessors.containsKey(n) && predecessors.get(n).get() != null) {
-          return predecessors.get(n).get();
+        if (predecessors.containsKey(n) && predecessors.get(n) != null) {
+          return predecessors.get(n);
         } else {
           Set<CGNode> preds = HashSetFactory.make();
           for(CGNode node : CHACallGraph.this) {
@@ -278,7 +280,7 @@ public class CHACallGraph extends BasicCallGraph<CHAContextInterpreter> {
               preds.add(node);
             }
           }
-          predecessors.put(n, new SoftReference<Set<CGNode>>(preds));
+          predecessors.put(n, preds);
           return preds;
         }
       }

@@ -14,6 +14,7 @@ package com.ibm.wala.cast.js.ipa.summaries;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
 
@@ -42,7 +43,7 @@ import com.ibm.wala.types.TypeReference;
 import com.ibm.wala.util.collections.HashMapFactory;
 import com.ibm.wala.util.collections.Pair;
 
-public class JavaScriptConstructorFunctions {
+public class JavaScriptConstructorFunctions implements Serializable{
 
   private final Map<Object, IMethod> constructors = HashMapFactory.make();
 

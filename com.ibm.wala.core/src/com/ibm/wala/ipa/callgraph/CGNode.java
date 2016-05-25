@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.ipa.callgraph;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 import com.ibm.wala.classLoader.CallSiteReference;

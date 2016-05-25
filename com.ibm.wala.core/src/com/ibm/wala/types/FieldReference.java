@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.types;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import com.ibm.wala.util.collections.HashMapFactory;
@@ -100,7 +101,7 @@ public final class FieldReference extends MemberReference {
   /**
    * An identifier/selector for fields.
    */
-  protected static class Key {
+  protected static class Key implements Serializable{
     final TypeReference type;
 
     final Atom name;

@@ -10,6 +10,7 @@
  *****************************************************************************/
 package com.ibm.wala.cast.tree;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -28,7 +29,7 @@ import java.util.Map;
  * @author Julian Dolby (dolby@us.ibm.com)
  *
  */
-public interface CAstEntity {
+public interface CAstEntity extends Serializable{
 
   /** This entity is a function.
    * Children: in JavaScript, FUNCTION_ENTITY's; in Java, none.

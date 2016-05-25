@@ -10,10 +10,12 @@
  *******************************************************************************/
 package com.ibm.wala.shrikeCT;
 
+import java.io.Serializable;
+
 /**
  * This interface defines class file constants used by ShrikeCT. The names and values are taken directly from the JVM spec.
  */
-public interface ClassConstants {
+public interface ClassConstants extends Serializable{
   public static final int MAGIC = 0xCAFEBABE;
 
   public static final byte CONSTANT_Utf8 = 1;

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.classLoader;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import com.ibm.wala.ipa.cha.IClassHierarchyDweller;
@@ -20,7 +21,7 @@ import com.ibm.wala.util.strings.Atom;
  * Basic interface for an object that represents a single
  * Java member (method or field) for analysis purposes.
  */
-public interface IMember extends IClassHierarchyDweller {
+public interface IMember extends IClassHierarchyDweller, Serializable {
 
   /**
    * Return the object that represents the declaring class

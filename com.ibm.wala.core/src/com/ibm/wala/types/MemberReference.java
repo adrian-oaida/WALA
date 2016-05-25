@@ -10,12 +10,14 @@
  *******************************************************************************/
 package com.ibm.wala.types;
 
+import java.io.Serializable;
+
 import com.ibm.wala.util.strings.Atom;
 
 /**
  * Abstract superclass of {@link MethodReference} and {@link FieldReference}
  */
-public abstract class MemberReference {
+public abstract class MemberReference implements Serializable{
 
   /**
    * The type that declares this member

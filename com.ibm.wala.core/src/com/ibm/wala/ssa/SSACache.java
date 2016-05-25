@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.ibm.wala.ssa;
 
+import java.io.Serializable;
+
 import com.ibm.wala.classLoader.IMethod;
 import com.ibm.wala.ipa.callgraph.Context;
 import com.ibm.wala.ipa.callgraph.impl.Everywhere;
@@ -19,7 +21,7 @@ import com.ibm.wala.ipa.callgraph.impl.Everywhere;
  * 
  * This doesn't work very well ... GCs don't do such a great job with SoftReferences ... revamp it.
  */
-public class SSACache {
+public class SSACache implements Serializable{
 
   /**
    * used for debugging

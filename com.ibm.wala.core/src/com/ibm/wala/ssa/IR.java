@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.ssa;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -42,7 +43,7 @@ import com.ibm.wala.util.strings.StringStuff;
  * 
  * See http://wala.sourceforge.net/wiki/index.php/UserGuide:IR for more details on the IR API.
  */
-public abstract class IR {
+public abstract class IR implements Serializable{
 
   /**
    * The method that defined this IR's bytecodes
@@ -696,7 +697,7 @@ public abstract class IR {
    * A Map that gives the names of the local variables corresponding to SSA value numbers at particular IR instruction indices, if
    * such information is available from source code mapping.
    */
-  public interface SSA2LocalMap {
+  public interface SSA2LocalMap extends Serializable{
     /**
      * @param index an index into the IR instruction array
      * @param vn a value number

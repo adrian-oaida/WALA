@@ -12,6 +12,7 @@ package com.ibm.wala.cast.js.translator;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -117,7 +118,7 @@ import com.ibm.wala.util.collections.HashSetFactory;
 import com.ibm.wala.util.debug.Assertions;
 import com.ibm.wala.util.warnings.Warning;
 
-public class RhinoToAstTranslator {
+public class RhinoToAstTranslator implements Serializable{
 
   /**
    * a dummy name to use for standard function calls, only used to distinguish

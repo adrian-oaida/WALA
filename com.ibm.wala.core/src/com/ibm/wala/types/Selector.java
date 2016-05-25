@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.ibm.wala.types;
 
+import java.io.Serializable;
+
 import com.ibm.wala.classLoader.Language;
 import com.ibm.wala.util.strings.Atom;
 
@@ -18,7 +20,7 @@ import com.ibm.wala.util.strings.Atom;
  * 
  * TODO: Canonicalize these?
  */
-public final class Selector {
+public final class Selector implements Serializable{
 
   private final Atom name;
 

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.ipa.cha;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
 
@@ -28,7 +29,7 @@ import com.ibm.wala.types.TypeReference;
 /**
  * General interface for a type hierarchy
  */
-public interface IClassHierarchy extends Iterable<IClass> {
+public interface IClassHierarchy extends Iterable<IClass>, Serializable{
 
   public ClassLoaderFactory getFactory();
 

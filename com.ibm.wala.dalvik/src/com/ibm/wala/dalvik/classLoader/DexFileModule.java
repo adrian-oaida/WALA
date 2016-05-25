@@ -68,7 +68,7 @@ import com.ibm.wala.util.io.TemporaryFile;
  * @author barjo
  */
 public class DexFileModule implements Module {
-    private final DexFile dexfile;
+    transient private final DexFile dexfile;
     private final Collection<ModuleEntry> entries;
 
     public static DexFileModule make(File f) throws IllegalArgumentException, IOException {

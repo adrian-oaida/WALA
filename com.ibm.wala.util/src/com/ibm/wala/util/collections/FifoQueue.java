@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.util.collections;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,7 +21,7 @@ import java.util.Set;
  * FIFO work queue management of Objects that prevents an object from being
  * added to the queue if it is already enqueued and has not yet been popped.
  */
-public class FifoQueue<T> {
+public class FifoQueue<T> implements Serializable{
   /**
    * The work queue. Items are references to Object instances.
    */

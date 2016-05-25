@@ -10,6 +10,7 @@
  *****************************************************************************/
 package com.ibm.wala.cast.tree;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import com.ibm.wala.util.debug.Assertions;
@@ -26,7 +27,7 @@ import com.ibm.wala.util.debug.Assertions;
  * @author Julian Dolby (dolby@us.ibm.com)
  * 
  */
-public interface CAstControlFlowMap {
+public interface CAstControlFlowMap extends Serializable{
 
   /**
    * A distinguished label that means this control flow is the default target of

@@ -10,13 +10,14 @@
  *******************************************************************************/
 package com.ibm.wala.util.graph;
 
+import java.io.Serializable;
 
 /**
  * Basic interface for a node which lives in one graph ... it's id is used
  * to implement the {@link NumberedGraph} interface.
  */
 
-public interface INodeWithNumber {
+public interface INodeWithNumber extends Serializable{
 
   /**
    * A non-negative integer which serves as an identifier for this node in

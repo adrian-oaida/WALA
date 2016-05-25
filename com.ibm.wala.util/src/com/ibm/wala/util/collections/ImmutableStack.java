@@ -38,6 +38,7 @@
 
 package com.ibm.wala.util.collections;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.EmptyStackException;
 import java.util.Iterator;
@@ -48,7 +49,7 @@ import java.util.Iterator;
  * 
  * @param <T>
  */
-public class ImmutableStack<T> implements Iterable<T> {
+public class ImmutableStack<T> implements Iterable<T>, Serializable {
 
 	private static final ImmutableStack<Object> EMPTY = new ImmutableStack<Object>(
 			new Object[0]);

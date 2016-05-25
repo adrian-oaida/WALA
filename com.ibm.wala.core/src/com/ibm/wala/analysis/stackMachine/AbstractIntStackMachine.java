@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.analysis.stackMachine;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 import com.ibm.wala.cfg.ShrikeCFG;
@@ -307,7 +308,7 @@ public abstract class AbstractIntStackMachine implements FixedPointConstants {
   /**
    * A Meeter object provides the dataflow logic needed to meet the abstract machine state for a dataflow meet.
    */
-  protected interface Meeter {
+  protected interface Meeter extends Serializable{
 
     /**
      * Return the integer that represents the meet of a particular stack slot at the entry to a basic block.

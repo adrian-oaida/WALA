@@ -37,10 +37,11 @@
  */
 package com.ibm.wala.util.collections;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
 
-public interface MultiMap<K, V> {
+public interface MultiMap<K, V> extends Serializable{
 
     public Set<V> get(K key);
 

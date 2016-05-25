@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.ipa.summaries;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -25,7 +26,7 @@ import com.ibm.wala.util.warnings.Warning;
 /**
  * Summary information for a method.
  */
-public class MethodSummary {
+public class MethodSummary implements Serializable{
 
   protected final static SSAInstruction[] NO_STATEMENTS = new SSAInstruction[0];
 

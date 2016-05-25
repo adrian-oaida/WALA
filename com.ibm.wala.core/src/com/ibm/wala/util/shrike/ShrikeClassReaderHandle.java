@@ -13,6 +13,7 @@ package com.ibm.wala.util.shrike;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 
 import com.ibm.wala.classLoader.ModuleEntry;
 import com.ibm.wala.shrikeCT.ClassReader;
@@ -27,7 +28,7 @@ import com.ibm.wala.util.ref.CacheReference;
  * weakness up the chain the InputStream, etc ... TODO: reduce reliance on
  * reader throughout the analysis packages
  */
-public class ShrikeClassReaderHandle {
+public class ShrikeClassReaderHandle implements Serializable{
 
   private final static boolean DEBUG = false;
   /**

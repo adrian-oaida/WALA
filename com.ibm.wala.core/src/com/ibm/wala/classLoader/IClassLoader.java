@@ -13,6 +13,7 @@ package com.ibm.wala.classLoader;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -26,7 +27,7 @@ import com.ibm.wala.util.strings.Atom;
 /**
  * Base class for an object that represents a single Java classloader for analysis purposes.
  */
-public interface IClassLoader {
+public interface IClassLoader extends Serializable{
   /**
    * Find and return the IClass defined by this class loader that corresponds to the given class name.
    * 

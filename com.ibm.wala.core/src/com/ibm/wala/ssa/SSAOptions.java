@@ -10,10 +10,12 @@
  *******************************************************************************/
 package com.ibm.wala.ssa;
 
+import java.io.Serializable;
+
 /**
  * Options that govern SSA construction
  */
-public class SSAOptions {
+public class SSAOptions implements Serializable{
 
   /**
    * While SSA form makes the not-unreasonable assumption that values must be defined before they are used, many

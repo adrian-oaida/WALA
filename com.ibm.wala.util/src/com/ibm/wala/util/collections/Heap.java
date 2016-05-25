@@ -10,12 +10,13 @@
  *******************************************************************************/
 package com.ibm.wala.util.collections;
 
+import java.io.Serializable;
 import java.util.NoSuchElementException;
 
 /**
  * Simple Heap data structure.
  */
-public abstract class Heap<T> {
+public abstract class Heap<T> implements Serializable{
 
   /**
    * @return true iff elt1 is considered < elt2

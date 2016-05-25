@@ -10,12 +10,13 @@
  *******************************************************************************/
 package com.ibm.wala.ipa.callgraph.cha;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 import com.ibm.wala.classLoader.CallSiteReference;
 import com.ibm.wala.ipa.callgraph.CGNode;
 
-public interface CHAContextInterpreter {
+public interface CHAContextInterpreter extends Serializable{
 
   /**
    * Does this object understand the given method? The caller had better check this before inquiring on other properties.

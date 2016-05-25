@@ -10,7 +10,9 @@
  *******************************************************************************/
 package com.ibm.wala.shrikeBT;
 
-public interface IndirectionData {
+import java.io.Serializable;
+
+public interface IndirectionData extends Serializable{
 
   int[] indirectlyReadLocals(int instructionIndex);
   

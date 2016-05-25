@@ -13,11 +13,12 @@
  */
 package com.ibm.wala.cast.tree;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import com.ibm.wala.util.collections.HashSetFactory;
 
-public class CAstQualifier {
+public class CAstQualifier implements Serializable{
   public static final Set/* <CAstQualifier> */<CAstQualifier>sQualifiers = HashSetFactory.make();
     
   public static final CAstQualifier CONST = new CAstQualifier("const");

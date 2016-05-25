@@ -48,7 +48,9 @@
 
 package com.ibm.wala.dalvik.classLoader;
 
-public abstract class Literal {
+import java.io.Serializable;
+
+public abstract class Literal implements Serializable{
     public int value;
 
     public static class IntLiteral extends Literal

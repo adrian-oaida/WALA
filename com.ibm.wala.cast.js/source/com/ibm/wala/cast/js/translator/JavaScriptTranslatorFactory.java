@@ -10,6 +10,8 @@
  *****************************************************************************/
 package com.ibm.wala.cast.js.translator;
 
+import java.io.Serializable;
+
 import com.ibm.wala.cast.ir.translator.TranslatorToCAst;
 import com.ibm.wala.cast.tree.CAst;
 import com.ibm.wala.classLoader.SourceModule;
@@ -19,7 +21,7 @@ import com.ibm.wala.classLoader.SourceModule;
  * JavaScript source file. Used to abstract which JavaScript parser is being
  * used.
  */
-public interface JavaScriptTranslatorFactory {
+public interface JavaScriptTranslatorFactory extends Serializable{
 
   TranslatorToCAst make(CAst ast, SourceModule M);
 

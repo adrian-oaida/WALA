@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.util.graph;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -21,7 +22,7 @@ import java.util.Iterator;
  * 
  * @param <T> the type of nodes this {@link NodeManager} tracks.
  */
-public interface NodeManager<T> extends Iterable<T> {
+public interface NodeManager<T> extends Iterable<T>, Serializable {
 
   /**
    * @return an {@link Iterator} of the nodes in this graph

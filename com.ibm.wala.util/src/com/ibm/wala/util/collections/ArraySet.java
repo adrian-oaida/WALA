@@ -37,6 +37,7 @@
  */
 package com.ibm.wala.util.collections;
 
+import java.io.Serializable;
 import java.util.AbstractSet;
 import java.util.Collection;
 import java.util.Iterator;
@@ -49,7 +50,7 @@ import java.util.NoSuchElementException;
  * @param <T>
  */
 
-public class ArraySet<T> extends AbstractSet<T> {
+public class ArraySet<T> extends AbstractSet<T> implements Serializable{
 
   @SuppressWarnings("rawtypes")
   private static final ArraySet EMPTY = new ArraySet<Object>(0, true) {

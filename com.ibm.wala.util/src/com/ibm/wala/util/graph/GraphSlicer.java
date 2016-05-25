@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.util.graph;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -34,7 +35,7 @@ import com.ibm.wala.util.graph.traverse.DFS;
 /**
  * Utilities related to simple graph subset operations.
  */
-public class GraphSlicer {
+public class GraphSlicer implements Serializable{
 
   /**
    * Performs a backward slice.

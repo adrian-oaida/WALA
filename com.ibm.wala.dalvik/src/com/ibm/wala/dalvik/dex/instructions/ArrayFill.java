@@ -63,7 +63,8 @@ public class ArrayFill extends Instruction {
     public final int array;
     public final int tableAddressOffset;
     public int registerIndex;
-    private ArrayDataPseudoInstruction table;
+    //todo , this is going to come back and bite me in the ***
+    transient private ArrayDataPseudoInstruction table;
     public final TypeReference type;
 
 

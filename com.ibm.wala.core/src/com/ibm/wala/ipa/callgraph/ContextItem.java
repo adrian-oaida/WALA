@@ -11,10 +11,12 @@
 
 package com.ibm.wala.ipa.callgraph;
 
+import java.io.Serializable;
+
 /**
  * A placeholder for strong typing.
  */
-public interface ContextItem {
+public interface ContextItem extends Serializable{
 
   public class Value<T> implements ContextItem {
     private final T v;

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.util.collections;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -22,7 +23,7 @@ import com.ibm.wala.util.debug.UnimplementedError;
 /**
  * A simple implementation of Map; intended for Maps with few elements. Optimized for space, not time -- use with care.
  */
-public class SmallMap<K, V> implements Map<K, V> {
+public class SmallMap<K, V> implements Map<K, V>, Serializable{
 
   private static final boolean DEBUG_USAGE = false;
 

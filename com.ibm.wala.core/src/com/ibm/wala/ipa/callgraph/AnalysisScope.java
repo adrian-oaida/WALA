@@ -12,6 +12,7 @@ package com.ibm.wala.ipa.callgraph;
 
 import java.io.File;
 import java.io.NotSerializableException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -24,6 +25,8 @@ import java.util.Set;
 import java.util.jar.Attributes;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
+
+import javax.sql.rowset.serial.SerialArray;
 
 import com.ibm.wala.classLoader.ArrayClassLoader;
 import com.ibm.wala.classLoader.BinaryDirectoryTreeModule;
@@ -61,7 +64,7 @@ import com.ibm.wala.util.strings.ImmutableByteArray;
  * 
  * Each class loader will load a set of classes described by a {@link Module}.
  */
-public class AnalysisScope {
+public class AnalysisScope implements Serializable{
 
   private final static int DEBUG_LEVEL = 0;
 

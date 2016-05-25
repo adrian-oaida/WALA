@@ -10,6 +10,8 @@
  *****************************************************************************/
 package com.ibm.wala.cast.tree;
 
+import java.io.Serializable;
+
 /**
  *  This interface represents nodes of CAPA Abstract Syntax Trees.  It
  * is a deliberately minimal interface, simply assuming that the nodes
@@ -41,7 +43,7 @@ package com.ibm.wala.cast.tree;
  * @author Robert M. Fuhrer (rfuhrer@watson.ibm.com)
  *
  */
-public interface CAstNode {
+public interface CAstNode extends Serializable{
 
   // statement kinds
   /**

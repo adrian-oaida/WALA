@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.ibm.wala.ipa.callgraph;
 
+import java.io.Serializable;
+
 /**
  * A Context is a mapping from a name (ContextKey) to a value (ContextItem)
  * 
@@ -18,7 +20,7 @@ package com.ibm.wala.ipa.callgraph;
  * As another example, for CPA, there would be name for each parameter slot ("zero","one","two"), and the Context provides a mapping
  * from this name to a set of types. eg. "one" -> {java.lang.String, java.lang.Date}
  */
-public interface Context {
+public interface Context extends Serializable{
   /**
    * @return the objects corresponding to a given name
    */

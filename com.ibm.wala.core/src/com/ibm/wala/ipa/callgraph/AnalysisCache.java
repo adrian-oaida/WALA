@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.ibm.wala.ipa.callgraph;
 
+import java.io.Serializable;
+
 import com.ibm.wala.classLoader.IMethod;
 import com.ibm.wala.ipa.callgraph.impl.Everywhere;
 import com.ibm.wala.ssa.DefUse;
@@ -25,7 +27,7 @@ import com.ibm.wala.util.ref.ReferenceCleanser;
  * 
  * Someday this should maybe go away?
  */
-public class AnalysisCache {
+public class AnalysisCache implements Serializable{
   private final IRFactory<IMethod> irFactory;
 
   private final SSACache ssaCache;

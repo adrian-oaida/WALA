@@ -47,7 +47,12 @@ import com.ibm.wala.util.warnings.Warning;
 import com.ibm.wala.util.warnings.Warnings;
 
 public class DexCFG extends AbstractCFG<Instruction, DexCFG.BasicBlock> implements BytecodeCFG {
-    private static final boolean DEBUG = false;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8325963882780166056L;
+
+	private static final boolean DEBUG = false;
 
     private int[] instruction2Block;
 
@@ -224,6 +229,10 @@ public class DexCFG extends AbstractCFG<Instruction, DexCFG.BasicBlock> implemen
     public final class BasicBlock extends NodeWithNumber implements IBasicBlock<Instruction> {
 
         /**
+		 * 
+		 */
+		private static final long serialVersionUID = -2625524083828230920L;
+		/**
          * The number of the ShrikeBT instruction that begins this block.
          */
         final private int startIndex;

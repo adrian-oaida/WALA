@@ -12,6 +12,7 @@
 package com.ibm.wala.classLoader;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import com.ibm.wala.ipa.callgraph.AnalysisScope;
 import com.ibm.wala.ipa.cha.IClassHierarchy;
@@ -19,7 +20,7 @@ import com.ibm.wala.types.ClassLoaderReference;
 
 /**
  */
-public interface ClassLoaderFactory {
+public interface ClassLoaderFactory extends Serializable{
 
   /**
    * Return a class loader corresponding to a given

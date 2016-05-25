@@ -47,6 +47,7 @@
 
 package com.ibm.wala.dalvik.classLoader;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -62,8 +63,12 @@ import com.ibm.wala.dalvik.dex.instructions.Instruction;
  * It's not allowed to remove an element.
  *
  */
-public class InstructionArray implements Collection<Instruction> {
-    List<Instruction> instructions;
+public class InstructionArray implements Collection<Instruction>, Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -662273479729102792L;
+	List<Instruction> instructions;
     Map<Integer, Integer> pc2index;
     List<Integer> index2pc;
 

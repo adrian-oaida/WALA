@@ -141,9 +141,11 @@ public class ExplicitCallGraph extends BasicCallGraph<SSAContextInterpreter> imp
     protected final SparseVector<Object> targets = new SparseVector<Object>();
 
     private final MutableSharedBitVectorIntSet allTargets = new MutableSharedBitVectorIntSet();
-    
-    private WeakReference<IR> ir = new WeakReference<IR>(null);
-    private WeakReference<DefUse> du = new WeakReference<DefUse>(null);
+//TODO , reinstate cache    
+//    private WeakReference<IR> ir = new WeakReference<IR>(null);
+//    private WeakReference<DefUse> du = new WeakReference<DefUse>(null);
+    private IR ir = null;
+    private DefUse du = null;
 
     /**
      * @param method
@@ -304,10 +306,12 @@ public class ExplicitCallGraph extends BasicCallGraph<SSAContextInterpreter> imp
         // do weird things like mutate IRs
         return getCallGraph().getInterpreter(this).getIR(this);
       }
-      IR ir = this.ir.get();
+// TODO     IR ir = this.ir.get();
+      IR ir = this.ir;
       if (ir == null) {
         ir = getCallGraph().getInterpreter(this).getIR(this);
-        this.ir = new WeakReference<IR>(ir);
+//        this.ir = new WeakReference<IR>(ir);
+        this.ir = ir;
       }
       return ir;
     }
@@ -319,10 +323,12 @@ public class ExplicitCallGraph extends BasicCallGraph<SSAContextInterpreter> imp
         // do weird things like mutate IRs
         return getCallGraph().getInterpreter(this).getDU(this);
       }
-      DefUse du = this.du.get();
+//  TODO    DefUse du = this.du.get();
+      DefUse du = this.du;
       if (du == null) {
         du = getCallGraph().getInterpreter(this).getDU(this);
-        this.du = new WeakReference<DefUse>(du);
+//        this.du = new WeakReference<DefUse>(du);
+        this.du = du;
       }
       return du;
     }
@@ -356,7 +362,7 @@ public class ExplicitCallGraph extends BasicCallGraph<SSAContextInterpreter> imp
 
   protected class ExplicitEdgeManager implements NumberedEdgeManager<CGNode> {
 
-    final IntFunction<CGNode> toNode = new IntFunction<CGNode>() {
+    transient final IntFunction<CGNode> toNode = new IntFunction<CGNode>() {
       @Override
       public CGNode apply(int i) {
         CGNode result = getNode(i);
@@ -370,7 +376,7 @@ public class ExplicitCallGraph extends BasicCallGraph<SSAContextInterpreter> imp
     /**
      * for each y, the {x | (x,y) is an edge)
      */
-    final IBinaryNaturalRelation predecessors = new BasicNaturalRelation(new byte[] { BasicNaturalRelation.SIMPLE_SPACE_STINGY },
+    transient final IBinaryNaturalRelation predecessors = new BasicNaturalRelation(new byte[] { BasicNaturalRelation.SIMPLE_SPACE_STINGY },
         BasicNaturalRelation.SIMPLE);
 
     @Override

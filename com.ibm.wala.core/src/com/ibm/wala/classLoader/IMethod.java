@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.ibm.wala.classLoader;
 
+import java.io.Serializable;
+
 import com.ibm.wala.ipa.callgraph.ContextItem;
 import com.ibm.wala.shrikeCT.InvalidClassFileException;
 import com.ibm.wala.types.Descriptor;
@@ -108,13 +110,14 @@ public interface IMethod extends IMember, ContextItem {
    */
   TypeReference[] getDeclaredExceptions() throws InvalidClassFileException, UnsupportedOperationException;
 
+
   /**
    * @return the source line number corresponding to a particular bytecode index, or -1 if the information is not available.
    */
   int getLineNumber(int bcIndex);
 /** BEGIN Custom change: precise positions */
   
-  public interface SourcePosition extends Comparable {
+  public interface SourcePosition extends Comparable, Serializable {
     int getFirstLine();
     int getLastLine();
     int getFirstCol();

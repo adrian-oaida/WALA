@@ -48,13 +48,22 @@
 
 package com.ibm.wala.dalvik.dex.instructions;
 
+import java.io.Serializable;
+
 import org.jf.dexlib.Code.Opcode;
 
 import com.ibm.wala.dalvik.classLoader.DexIMethod;
 
-public abstract class Instruction {
+public abstract class Instruction implements Serializable{
 
-    public static class Visitor {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2852688641163900099L;
+
+
+
+	public static class Visitor {
  
         public void visitArrayLength(ArrayLength instruction) {
          }

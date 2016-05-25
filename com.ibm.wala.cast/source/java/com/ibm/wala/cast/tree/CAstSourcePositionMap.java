@@ -12,6 +12,7 @@ package com.ibm.wala.cast.tree;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.Iterator;
 
@@ -26,7 +27,7 @@ import com.ibm.wala.classLoader.IMethod.SourcePosition;
  *
  * @author Julian Dolby (dolby@us.ibm.com)
  */
-public interface CAstSourcePositionMap {
+public interface CAstSourcePositionMap extends Serializable{
 
   /**
    *  This interface encapsulates the source position of an ast node

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.ipa.callgraph;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
@@ -23,7 +24,7 @@ import com.ibm.wala.util.graph.NumberedGraph;
 /**
  * Basic interface for a call graph, which is a graph of {@link CGNode}
  */
-public interface CallGraph extends NumberedGraph<CGNode> {
+public interface CallGraph extends NumberedGraph<CGNode>, Serializable {
 
   /**
    * Return the (fake) interprocedural {@link CGNode root node} of the call graph.

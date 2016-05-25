@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.ssa;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -18,7 +19,7 @@ import com.ibm.wala.types.TypeReference;
 /**
  * An instruction in SSA form.
  */
-public abstract class SSAInstruction {
+public abstract class SSAInstruction implements Serializable{
 
   public static final int NO_INDEX = -1;
   

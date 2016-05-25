@@ -10,6 +10,7 @@
  *****************************************************************************/
 package com.ibm.wala.cast.ir.ssa;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import com.ibm.wala.ssa.SSAInstruction;
@@ -30,7 +31,7 @@ public abstract class AstLexicalAccess extends SSAInstruction {
    *
    * @author Julian Dolby (dolby@us.ibm.com)
    */
-  public static class Access {
+  public static class Access implements Serializable{
     /**
      * name being accessed
      */

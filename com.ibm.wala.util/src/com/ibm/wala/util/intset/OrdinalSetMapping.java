@@ -10,12 +10,13 @@
  *******************************************************************************/
 package com.ibm.wala.util.intset;
 
+import java.io.Serializable;
 import java.util.NoSuchElementException;
 
 /**
  * An object that implements a bijection between whole numbers and objects.
  */
-public interface OrdinalSetMapping<T> extends Iterable<T> {
+public interface OrdinalSetMapping<T> extends Iterable<T>, Serializable {
   /**
    * @return the object numbered n.
    */

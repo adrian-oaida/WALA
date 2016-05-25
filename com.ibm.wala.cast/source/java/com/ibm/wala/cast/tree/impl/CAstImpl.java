@@ -135,7 +135,7 @@ public class CAstImpl implements CAst {
   }
 
   protected static class CAstValueImpl implements CAstNode {
-    protected final Object value;
+    transient protected final Object value;
 
     protected CAstValueImpl(Object value) {
       this.value = value;

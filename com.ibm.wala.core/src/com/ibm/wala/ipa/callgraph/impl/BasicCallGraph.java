@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.ipa.callgraph.impl;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -264,7 +265,7 @@ public abstract class BasicCallGraph<T> extends AbstractNumberedGraph<CGNode> im
     return getNode(key);
   }
 
-  protected final static class Key {
+  protected final static class Key implements Serializable{
     private final IMethod m;
 
     private final Context C;

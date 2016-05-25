@@ -10,6 +10,7 @@
  *****************************************************************************/
 package com.ibm.wala.cast.js.callgraph.fieldbased.flowgraph.vertices;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Map;
 
@@ -28,7 +29,7 @@ import com.ibm.wala.util.collections.Pair;
  * @author mschaefer
  *
  */
-public class VertexFactory {
+public class VertexFactory implements Serializable{
 	private final Map<Pair<FuncVertex, CallSiteReference>, CallVertex> callVertexCache = HashMapFactory.make();
 	private final Map<IClass, FuncVertex> funcVertexCache = HashMapFactory.make();
 	private final Map<Pair<FuncVertex, Integer>, ParamVertex> paramVertexCache = HashMapFactory.make();

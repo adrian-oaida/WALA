@@ -10,8 +10,9 @@
  *****************************************************************************/
 package com.ibm.wala.cast.js.callgraph.fieldbased.flowgraph.vertices;
 
+import java.io.Serializable;
 
-public interface VertexVisitor<T> {
+public interface VertexVisitor<T> extends Serializable{
 	public abstract T visitVarVertex(VarVertex varVertex);
 	public abstract T visitPropVertex(PropVertex propVertex);
 	public abstract T visitUnknownVertex(UnknownVertex unknownVertex);

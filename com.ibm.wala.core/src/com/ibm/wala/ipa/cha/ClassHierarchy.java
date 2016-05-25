@@ -11,6 +11,7 @@
 package com.ibm.wala.ipa.cha;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.ConcurrentModificationException;
@@ -673,7 +674,7 @@ public class ClassHierarchy implements IClassHierarchy {
   /**
    * internal representation of a node in the class hiearachy, representing one java class.
    */
-  private static final class Node {
+  private static final class Node implements Serializable{
 
     private final IClass klass;
 

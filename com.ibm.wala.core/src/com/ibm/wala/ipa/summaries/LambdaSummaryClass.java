@@ -12,6 +12,7 @@ package com.ibm.wala.ipa.summaries;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
@@ -41,9 +42,10 @@ import com.ibm.wala.util.collections.HashSetFactory;
 import com.ibm.wala.util.strings.Atom;
 
 public class LambdaSummaryClass extends SyntheticClass {
+//TODO, reinstate this
+//  private static WeakHashMap<BootstrapMethod, LambdaSummaryClass> summaries = new WeakHashMap<BootstrapMethod, LambdaSummaryClass>();
+  private static HashMap<BootstrapMethod, LambdaSummaryClass> summaries = new HashMap<BootstrapMethod, LambdaSummaryClass>();
 
-  private static WeakHashMap<BootstrapMethod, LambdaSummaryClass> summaries = new WeakHashMap<BootstrapMethod, LambdaSummaryClass>();
-  
   public static LambdaSummaryClass findOrCreate(CGNode caller, SSAInvokeDynamicInstruction inst) {
     if (! summaries.containsKey(inst.getBootstrap())) {
       String bootstrapCls = caller.getMethod().getDeclaringClass().getName().toString().replace("/", "$").substring(1);

@@ -10,10 +10,12 @@
  *******************************************************************************/
 package com.ibm.wala.util.intset;
 
+import java.io.Serializable;
+
 /**
  * A pair of ints. Note that an IntPair has value semantics.
  */
-public class IntPair {
+public class IntPair implements Serializable{
   final int x;
 
   final int y;

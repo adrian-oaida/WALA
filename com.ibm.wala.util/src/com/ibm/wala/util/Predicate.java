@@ -37,6 +37,7 @@
  */
 package com.ibm.wala.util;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -45,7 +46,7 @@ import java.util.List;
 /**
  * Interface for defining an arbitrary predicate on {@link Object}s.
  */
-public abstract class Predicate<T> {
+public abstract class Predicate<T> implements Serializable{
   @SuppressWarnings("rawtypes")
   public static final Predicate FALSE = new Predicate() {
     @Override

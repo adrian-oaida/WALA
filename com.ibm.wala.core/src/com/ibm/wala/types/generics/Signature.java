@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.ibm.wala.types.generics;
 
+import java.io.Serializable;
+
 /**
  * Base class for wrappers around Strings that represent Signature annotations
  * according to Java 5.0 JVM spec enhancements.
@@ -17,7 +19,7 @@ package com.ibm.wala.types.generics;
  * @author sjfink
  * 
  */
-public abstract class Signature {
+public abstract class Signature implements Serializable{
 
   private final String s;
 

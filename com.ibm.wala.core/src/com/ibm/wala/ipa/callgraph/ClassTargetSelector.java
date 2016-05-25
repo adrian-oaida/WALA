@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.ibm.wala.ipa.callgraph;
 
+import java.io.Serializable;
+
 import com.ibm.wala.classLoader.IClass;
 import com.ibm.wala.classLoader.NewSiteReference;
 
@@ -27,7 +29,7 @@ import com.ibm.wala.classLoader.NewSiteReference;
  * otherwise delegate to a child selector. When registering with the AnalysisOptions object, make the child selector be whatever the
  * options object had before.
  */
-public interface ClassTargetSelector {
+public interface ClassTargetSelector extends Serializable{
 
   /**
    * Given a calling node and a new site, return the type to be allocated.

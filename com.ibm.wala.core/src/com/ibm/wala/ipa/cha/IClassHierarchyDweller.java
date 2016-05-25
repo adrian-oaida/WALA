@@ -10,9 +10,11 @@
  *******************************************************************************/
 package com.ibm.wala.ipa.cha;
 
+import java.io.Serializable;
+
 /**
  * Something that lives in a class hierarchy
  */
-public interface IClassHierarchyDweller {
+public interface IClassHierarchyDweller extends Serializable{
   public IClassHierarchy getClassHierarchy();
 }

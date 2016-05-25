@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.cast.js.callgraph.fieldbased.flowgraph;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -77,7 +78,7 @@ import com.ibm.wala.util.intset.OrdinalSetMapping;
  * 
  * @author mschaefer
  */
-public class FlowGraph implements Iterable<Vertex> {
+public class FlowGraph implements Iterable<Vertex>,Serializable {
   
 	// the actual flow graph representation
 	private final NumberedGraph<Vertex> graph;

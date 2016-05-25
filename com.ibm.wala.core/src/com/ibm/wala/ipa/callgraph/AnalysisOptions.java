@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.ibm.wala.ipa.callgraph;
 
+import java.io.Serializable;
+
 import com.ibm.wala.analysis.reflection.ReflectionContextInterpreter;
 import com.ibm.wala.analysis.reflection.ReflectionContextSelector;
 import com.ibm.wala.ipa.callgraph.impl.ExplicitCallGraph;
@@ -21,7 +23,7 @@ import com.ibm.wala.ssa.SSAOptions;
  * 
  * TODO: This class should be refactored into an abstract base class and language-specific subclasses.
  */
-public class AnalysisOptions {
+public class AnalysisOptions implements Serializable{
 
   /**
    * An object that represents the analysis scope

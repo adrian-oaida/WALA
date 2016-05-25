@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.ibm.wala.shrikeBT;
 
+import java.io.Serializable;
+
 /**
  * This interface defines a bunch of constants from the JVM spec. It also defines some constants we need for other purposes.
  * 
@@ -32,7 +34,7 @@ package com.ibm.wala.shrikeBT;
  * <li>The indexedTypes_T array maps those numeric representations to the corresponding T_ constant.
  * </ul>
  */
-public interface Constants {
+public interface Constants extends Serializable{
 
   public static final short OP_nop = 0;
 

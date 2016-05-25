@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.classLoader;
 
+import java.io.Serializable;
 import java.lang.ref.SoftReference;
 import java.util.Arrays;
 import java.util.Collection;
@@ -71,7 +72,7 @@ public abstract class ShrikeBTMethod implements IMethod, BytecodeConstants {
   private MethodReference methodReference;
 
   // break these out to save some space; they're computed lazily.
-  protected static class BytecodeInfo {
+  protected static class BytecodeInfo implements Serializable{
     Decoder decoder;
 
     CallSiteReference[] callSites;
@@ -132,8 +133,10 @@ public abstract class ShrikeBTMethod implements IMethod, BytecodeConstants {
   /**
    * Cache the information about the method statements.
    */
-  private SoftReference<BytecodeInfo> bcInfo;
-
+  //TODO replace this for cache
+//   private SoftReference<BytecodeInfo> bcInfo;
+  private BytecodeInfo bcInfo;
+  
   public ShrikeBTMethod(IClass klass) {
     this.declaringClass = klass;
   }
@@ -141,11 +144,13 @@ public abstract class ShrikeBTMethod implements IMethod, BytecodeConstants {
   protected synchronized BytecodeInfo getBCInfo() throws InvalidClassFileException {
     BytecodeInfo result = null;
     if (bcInfo != null) {
-      result = bcInfo.get();
+      result = bcInfo;
+//      result = bcInfo.get();
     }
     if (result == null) {
       result = computeBCInfo();
-      bcInfo = new SoftReference<BytecodeInfo>(result);
+      bcInfo = result;
+//      bcInfo = new SoftReference<BytecodeInfo>(result);
     }
     return result;
   }

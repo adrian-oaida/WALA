@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.ibm.wala.shrikeBT;
 
+import java.io.Serializable;
+
 /**
  * An ExceptionHandler represents a single handler covering a single instruction. It simply tells us what kind of exception to catch
  * and where to dispatch the exception to.
@@ -29,7 +31,7 @@ package com.ibm.wala.shrikeBT;
  *   }
  * </pre>
  */
-final public class ExceptionHandler {
+final public class ExceptionHandler implements Serializable{
 
   int handler;
 

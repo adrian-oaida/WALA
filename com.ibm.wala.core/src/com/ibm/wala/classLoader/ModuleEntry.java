@@ -12,12 +12,13 @@
 package com.ibm.wala.classLoader;
 
 import java.io.InputStream;
+import java.io.Serializable;
 
 /**
  * A ModuleEntry represents a wrapper around a file representation
  * in a {@link Module}.
  */
-public interface ModuleEntry {
+public interface ModuleEntry extends Serializable{
 
   /**
    * @return a String that represents the name of the file described

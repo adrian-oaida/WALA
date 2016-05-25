@@ -598,7 +598,7 @@ public final class TypeReference implements Serializable {
     return findOrCreate(loader, tn);
   }
 
-  private static class Key {
+  private static class Key implements Serializable{
     /**
      * The initiating class loader
      */

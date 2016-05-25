@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.util.graph;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 /**
@@ -17,7 +18,7 @@ import java.util.Iterator;
  * 
  * @param <T> the type of node in the graph
  */
-public interface EdgeManager<T> {
+public interface EdgeManager<T> extends Serializable{
 
   /**
    * Return an {@link Iterator} over the immediate predecessor nodes of n

@@ -11,6 +11,8 @@
 
 package com.ibm.wala.ssa;
 
+import java.io.Serializable;
+
 import com.ibm.wala.classLoader.CallSiteReference;
 import com.ibm.wala.classLoader.NewSiteReference;
 import com.ibm.wala.shrikeBT.IBinaryOpInstruction;
@@ -24,7 +26,7 @@ import com.ibm.wala.types.TypeReference;
 /**
  * An instruction factory for SSA. 
  */
-public interface SSAInstructionFactory {
+public interface SSAInstructionFactory extends Serializable{
 
   SSAAddressOfInstruction AddressOfInstruction(int iindex, int lval, int local, TypeReference pointeeType);
 

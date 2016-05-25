@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.types;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import com.ibm.wala.classLoader.Language;
@@ -23,7 +24,7 @@ import com.ibm.wala.util.strings.UTF8Convert;
  * 
  * Descriptors are canonical
  */
-public final class Descriptor {
+public final class Descriptor implements Serializable{
 
   /**
    * A mapping from Key -> Descriptor
@@ -146,7 +147,7 @@ public final class Descriptor {
   /**
    * value that defines a descriptor: used to canonicalize instances
    */
-  private static class Key {
+  private static class Key implements Serializable{
     final private TypeName returnType;
 
     final private TypeName[] parameters;

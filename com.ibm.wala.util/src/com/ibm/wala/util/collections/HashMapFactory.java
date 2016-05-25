@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.util.collections;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -18,7 +19,7 @@ import java.util.Map;
  * A debugging aid.  When HashSetFactory.DEBUG is set, this class creates ParanoidHashMaps.  Otherwise,
  * it returns {@link LinkedHashMap}
  */
-public class HashMapFactory {
+public class HashMapFactory implements Serializable{
 
   /**
    * @param size

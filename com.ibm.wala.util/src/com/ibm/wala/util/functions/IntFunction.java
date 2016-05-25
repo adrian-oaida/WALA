@@ -10,9 +10,11 @@
  *******************************************************************************/
 package com.ibm.wala.util.functions;
 
+import java.io.Serializable;
+
 /**
  */
-public interface IntFunction<T> {
+public interface IntFunction<T>{
 
   T apply(int i);
 

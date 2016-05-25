@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.classLoader;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import com.ibm.wala.ipa.cha.IClassHierarchy;
@@ -21,7 +22,7 @@ import com.ibm.wala.util.collections.HashMapFactory;
  * Pseudo-classloader for all array classes; all other IClassLoader
  * implementations should delegate to this one for array classes only.
  */
-public class ArrayClassLoader {
+public class ArrayClassLoader implements Serializable{
 
   private final static boolean DEBUG = false;
 

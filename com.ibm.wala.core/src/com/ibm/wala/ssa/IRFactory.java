@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.ibm.wala.ssa;
 
+import java.io.Serializable;
+
 import com.ibm.wala.classLoader.IMethod;
 import com.ibm.wala.ipa.callgraph.CGNode;
 import com.ibm.wala.ipa.callgraph.Context;
@@ -21,7 +23,7 @@ import com.ibm.wala.ipa.callgraph.Context;
  * 
  * Otherwise, look at {@link SSACache}.
  */
-public interface IRFactory<T extends IMethod> {
+public interface IRFactory<T extends IMethod> extends Serializable{
 
   /**
    * Build an SSA {@link IR} for a method in a particular context

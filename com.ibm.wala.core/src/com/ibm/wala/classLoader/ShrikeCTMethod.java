@@ -11,6 +11,7 @@
 package com.ibm.wala.classLoader;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Collection;
 
 import com.ibm.wala.ipa.cha.IClassHierarchy;
@@ -148,7 +149,7 @@ public final class ShrikeCTMethod extends ShrikeBTMethod implements IBytecodeMet
   }
 /** BEGIN Custom change: precise positions */
   
-  private static final class SPos implements SourcePosition {
+  private static final class SPos implements SourcePosition, Serializable {
 
     final int firstLine;
     final int lastLine;

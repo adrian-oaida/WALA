@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.ssa;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -46,7 +47,7 @@ import java.util.Collection;
  * information to rebuild SSA accounting for the fact that (1) defs v2.
  * 
  */
-public interface SSAIndirectionData<T extends SSAIndirectionData.Name> {
+public interface SSAIndirectionData<T extends SSAIndirectionData.Name> extends Serializable{
 
   /**
    * A Name is a mock interface introduced just for strong typing. A Name represents some semantic entity in the program
