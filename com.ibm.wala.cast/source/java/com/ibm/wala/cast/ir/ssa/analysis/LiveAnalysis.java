@@ -10,6 +10,7 @@
  *****************************************************************************/
 package com.ibm.wala.cast.ir.ssa.analysis;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 import com.ibm.wala.cfg.ControlFlowGraph;
@@ -49,9 +50,9 @@ import com.ibm.wala.util.intset.IntSet;
  * - The solver uses node transfer functions only.
  * - Performance: inverts the CFG to traverse backwards (backward analysis).
  */
-public class LiveAnalysis {
+public class LiveAnalysis implements Serializable{
 
-  public interface Result {
+  public interface Result extends Serializable{
     boolean isLiveEntry(ISSABasicBlock bb, int valueNumber);
 
     boolean isLiveExit(ISSABasicBlock bb, int valueNumber);

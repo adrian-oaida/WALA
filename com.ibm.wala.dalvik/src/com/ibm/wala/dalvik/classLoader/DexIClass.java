@@ -87,6 +87,11 @@ import com.ibm.wala.util.strings.ImmutableByteArray;
 public class DexIClass extends BytecodeClass<IClassLoader> {
 
 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4527734722777596229L;
+
+/**
      * Item which contains the class definitions.
      * (compute by DexFile, from the dexLib)
      */

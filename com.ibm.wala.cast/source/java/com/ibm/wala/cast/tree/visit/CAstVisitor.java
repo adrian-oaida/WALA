@@ -10,6 +10,7 @@
  *****************************************************************************/
 package com.ibm.wala.cast.tree.visit;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -49,7 +50,7 @@ public abstract class CAstVisitor<C extends CAstVisitor.Context> {
    *
    * @author Igor Peshansky
    */
-  public interface Context {
+  public interface Context extends Serializable{
     
     CAstEntity top();
     

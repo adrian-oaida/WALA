@@ -13,6 +13,7 @@ package com.ibm.wala.cast.js.html;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.Serializable;
 import java.net.URL;
 
 import com.ibm.wala.cast.tree.CAstSourcePositionMap.Position;
@@ -20,7 +21,7 @@ import com.ibm.wala.cast.tree.impl.AbstractSourcePosition;
 
 public class RangeFileMapping implements FileMapping {
 
-  public final static class Range {
+  public final static class Range implements Serializable{
     private final int rangeStart;
     private final int rangeEnd;
     private final int rangeStartingLine;

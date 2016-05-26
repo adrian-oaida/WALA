@@ -10,6 +10,8 @@
  *****************************************************************************/
 package com.ibm.wala.cast.tree;
 
+import java.io.Serializable;
+
 /**
  *  The main interface for creating CAPA Abstract Syntax Trees.  This
  * interface provides essentially a factory for creating AST nodes in
@@ -23,7 +25,7 @@ package com.ibm.wala.cast.tree;
  * @author Julian Dolby (dolby@us.ibm.com)
  *
  */
-public interface CAst {
+public interface CAst extends Serializable{
 
   /** Make a node of type kind with no children. */
   CAstNode makeNode(int kind);

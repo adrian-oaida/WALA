@@ -13,11 +13,12 @@
  */
 package com.ibm.wala.cast.tree;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-public interface CAstType {
+public interface CAstType extends Serializable{
     /**
      * Returns the fully-qualified (e.g. bytecode-compliant for Java) type name.
      */

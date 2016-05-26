@@ -10,6 +10,8 @@
  *******************************************************************************/
 package com.ibm.wala.dataflow.graph;
 
+import java.io.Serializable;
+
 import com.ibm.wala.fixpoint.IVariable;
 import com.ibm.wala.util.graph.Graph;
 
@@ -20,7 +22,7 @@ import com.ibm.wala.util.graph.Graph;
  * @param <T> type of nodes in the graph
  */
 @SuppressWarnings("rawtypes")
-public interface IKilldallFramework<T,V extends IVariable> {
+public interface IKilldallFramework<T,V extends IVariable> extends Serializable{
 
   /**
    * @return the flow graph which induces this dataflow problem

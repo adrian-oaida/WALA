@@ -13,6 +13,7 @@ package com.ibm.wala.cast.js.html;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
+import java.io.Serializable;
 import java.io.StringReader;
 import java.net.URL;
 
@@ -23,7 +24,7 @@ import com.ibm.wala.cast.tree.CAstSourcePositionMap.Position;
  * added to other {@link SourceRegion}s, with nested source location information
  * maintained.
  */
-public class SourceRegion {
+public class SourceRegion implements Serializable{
 
   private final StringBuilder source = new StringBuilder();
   

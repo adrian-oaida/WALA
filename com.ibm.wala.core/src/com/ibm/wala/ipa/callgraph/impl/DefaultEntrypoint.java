@@ -27,6 +27,11 @@ public class DefaultEntrypoint extends Entrypoint {
 
   private final IClassHierarchy cha;
 
+  public DefaultEntrypoint(){
+    super();
+    paramTypes = null;
+    cha = null;
+  }
   public DefaultEntrypoint(IMethod method, IClassHierarchy cha) {
 
     super(method);

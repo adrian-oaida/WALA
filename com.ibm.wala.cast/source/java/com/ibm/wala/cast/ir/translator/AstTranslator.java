@@ -10,6 +10,7 @@
  *****************************************************************************/
 package com.ibm.wala.cast.ir.translator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -97,7 +98,7 @@ import com.ibm.wala.util.warnings.Warning;
  * Common code to translate CAst to IR. Must be specialized by each language to
  * handle semantics appropriately.
  */
-public abstract class AstTranslator extends CAstVisitor<AstTranslator.WalkContext> implements ArrayOpHandler, TranslatorToIR {
+public abstract class AstTranslator extends CAstVisitor<AstTranslator.WalkContext> implements ArrayOpHandler, TranslatorToIR,Serializable {
 
   /**
    * does the language care about using type-appropriate default values? For
@@ -828,7 +829,7 @@ public abstract class AstTranslator extends CAstVisitor<AstTranslator.WalkContex
 
     private final Map<Object, Set<Pair<PreBasicBlock, Boolean>>> delayedEdges = new LinkedHashMap<Object, Set<Pair<PreBasicBlock, Boolean>>>();
 
-    private final Object exitMarker = new Object();
+    transient private final Object exitMarker = new Object();
 
     private final Set<PreBasicBlock> deadBlocks = new LinkedHashSet<PreBasicBlock>();
 
@@ -1461,7 +1462,7 @@ public abstract class AstTranslator extends CAstVisitor<AstTranslator.WalkContex
    * 
    * @see Scope
    */
-  protected interface Symbol {
+  protected interface Symbol extends Serializable{
     int valueNumber();
 
     Scope getDefiningScope();
@@ -1484,7 +1485,7 @@ public abstract class AstTranslator extends CAstVisitor<AstTranslator.WalkContex
   /**
    * a scope in the symbol table built during AST traversal
    */
-  public interface Scope {
+  public interface Scope extends Serializable{
 
     ScopeType type();
 

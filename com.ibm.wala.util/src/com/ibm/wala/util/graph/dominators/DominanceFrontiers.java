@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.util.graph.dominators;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -23,7 +24,7 @@ import com.ibm.wala.util.graph.traverse.DFS;
 /**
  * An object that computes the dominance frontiers of a graph
  */
-public class DominanceFrontiers<T> {
+public class DominanceFrontiers<T> implements Serializable{
 
   final private Map<T, Set<T>> DF = HashMapFactory.make();
 

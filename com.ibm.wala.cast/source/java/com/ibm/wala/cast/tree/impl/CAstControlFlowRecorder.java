@@ -39,16 +39,16 @@ import com.ibm.wala.cast.tree.CAstSourcePositionMap;
  */
 public class CAstControlFlowRecorder implements CAstControlFlowMap {
   private final CAstSourcePositionMap src;
+//TODO this is going to come back to bite me in the ***
+  transient private final Map<CAstNode, Object> CAstToNode = new LinkedHashMap<CAstNode, Object>();
 
-  private final Map<CAstNode, Object> CAstToNode = new LinkedHashMap<CAstNode, Object>();
+  transient private final Map<Object, CAstNode> nodeToCAst = new LinkedHashMap<Object, CAstNode>();
 
-  private final Map<Object, CAstNode> nodeToCAst = new LinkedHashMap<Object, CAstNode>();
+  transient private final Map<Key, Object> table = new LinkedHashMap<Key, Object>();
 
-  private final Map<Key, Object> table = new LinkedHashMap<Key, Object>();
+  transient private final Map<Object, Set<Object>> labelMap = new LinkedHashMap<Object, Set<Object>>();
 
-  private final Map<Object, Set<Object>> labelMap = new LinkedHashMap<Object, Set<Object>>();
-
-  private final Map<Object, Set<Object>> sourceMap = new LinkedHashMap<Object, Set<Object>>();
+  transient private final Map<Object, Set<Object>> sourceMap = new LinkedHashMap<Object, Set<Object>>();
 
   /**
    * for optimizing {@link #getMappedNodes()}; methods that change the set of

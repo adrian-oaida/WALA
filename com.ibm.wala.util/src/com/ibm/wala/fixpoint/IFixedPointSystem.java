@@ -10,13 +10,14 @@
  *******************************************************************************/
 package com.ibm.wala.fixpoint;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 /**
  * Represents a set of {@link IFixedPointStatement}s to be solved by a {@link IFixedPointSolver}
  */
 @SuppressWarnings("rawtypes")
-public interface IFixedPointSystem<T extends IVariable> {
+public interface IFixedPointSystem<T extends IVariable> extends Serializable{
 
   /**
    * removes a given statement

@@ -10,7 +10,9 @@
  *******************************************************************************/
 package com.ibm.wala.cast.tree;
 
-public interface CAstSymbol {
+import java.io.Serializable;
+
+public interface CAstSymbol extends Serializable{
 
   public static Object NULL_DEFAULT_VALUE = new Object() {
     @Override

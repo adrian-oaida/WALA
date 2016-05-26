@@ -10,10 +10,12 @@
  *******************************************************************************/
 package com.ibm.wala.fixpoint;
 
+import java.io.Serializable;
+
 /**
  * Constants used in the fixed-point solver framework
  */
-public interface FixedPointConstants {
+public interface FixedPointConstants extends Serializable{
 
   /**
    * A return value which indicates that a lhs has changed, and the statement might

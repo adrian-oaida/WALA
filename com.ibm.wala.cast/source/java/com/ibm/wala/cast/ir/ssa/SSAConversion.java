@@ -10,6 +10,7 @@
  *****************************************************************************/
 package com.ibm.wala.cast.ir.ssa;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -77,7 +78,7 @@ public class SSAConversion extends AbstractSSAConversion {
 
   private final Stack<CopyPropagationRecord> R[];
 
-  private static class UseRecord {
+  private static class UseRecord implements Serializable{
     final int instructionIndex;
 
     final int useNumber;
@@ -104,7 +105,7 @@ public class SSAConversion extends AbstractSSAConversion {
     }
   }
 
-  private class PhiUseRecord {
+  private class PhiUseRecord implements Serializable{
     final int BBnumber;
 
     final int phiNumber;
@@ -134,7 +135,7 @@ public class SSAConversion extends AbstractSSAConversion {
     }
   }
 
-  private class CopyPropagationRecord {
+  private class CopyPropagationRecord implements Serializable{
     final int rhs;
 
     final int lhs;

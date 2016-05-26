@@ -33,7 +33,7 @@ import com.ibm.wala.util.collections.Pair;
  */
 public class JerichoTag implements ITag {
 
-	private final Element innerElement;
+	transient private final Element innerElement;
 	private final String sourceFile;
 	private Map<String, Pair<String, Position>> allAttributes = null;
 	
@@ -42,17 +42,21 @@ public class JerichoTag implements ITag {
 		this.sourceFile = sourceFile;
 	}
 
-	 private Position getPosition(final Segment e) {
+	 private Position getPosition(Segment e) {
+	    final int firstLine = e.getSource().getRowColumnVector(e.getBegin()).getRow();
+	    final int lastLine = e.getSource().getRowColumnVector(e.getEnd()).getRow();
+	    final int firstOffset = e.getBegin();
+	    final int lastOffset = e.getEnd();
 	    return new AbstractSourcePosition() {
-
+	       
 	      @Override
 	      public int getFirstLine() {
-	        return e.getSource().getRowColumnVector(e.getBegin()).getRow();
+	        return firstLine;
 	      }
 
 	      @Override
 	      public int getLastLine() {
-	        return e.getSource().getRowColumnVector(e.getEnd()).getRow();
+	        return lastLine;
 	      }
 
 	      @Override
@@ -69,12 +73,12 @@ public class JerichoTag implements ITag {
 
 	      @Override
 	      public int getFirstOffset() {
-	         return e.getBegin();
+	         return firstOffset;
 	      }
 
 	      @Override
 	      public int getLastOffset() {
-	        return e.getEnd();
+	        return lastOffset;
 	      }
 
 	      @Override

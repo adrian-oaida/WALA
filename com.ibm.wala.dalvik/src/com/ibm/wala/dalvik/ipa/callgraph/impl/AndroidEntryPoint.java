@@ -63,12 +63,20 @@ import com.ibm.wala.util.strings.Atom;
  *  @author  Tobias Blaschke <code@toiasblaschke.de>
  *  @since   2013-09-01
  */
-public class AndroidEntryPoint extends DexEntryPoint {
-        //implements AndroidEntryPoint.IExecutionOrder { 
+public class AndroidEntryPoint extends DexEntryPoint implements Serializable{
+        /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6705422971312628943L;
+
+	//implements AndroidEntryPoint.IExecutionOrder { 
     public ExecutionOrder order; // XXX protect?
 
     protected AndroidComponent superType;
 
+    public AndroidEntryPoint(){
+    	super();
+    }
     public AndroidEntryPoint(AndroidPossibleEntryPoint p, IMethod method, IClassHierarchy cha, AndroidComponent inComponent) {
         super(method, cha);
         this.order = p.order;
@@ -191,7 +199,11 @@ public class AndroidEntryPoint extends DexEntryPoint {
      * You can use AndroidEntryPoint.ExecutionOrderComperator for that task.
      */
     public static class ExecutionOrder implements Comparable<IExecutionOrder>, IExecutionOrder {
-        // This is an Enum-Style class
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 4761956517328432094L;
+		// This is an Enum-Style class
         /** Visit the EntryPoint once at the beginning of the model use that for initialization stuff  */
         public final static ExecutionOrder AT_FIRST = new ExecutionOrder(0);
         /** Basicly the same as AT_FIRST but visited after AT_FIRST */

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.ibm.wala.util.graph.dominators;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -36,7 +37,7 @@ import com.ibm.wala.util.graph.traverse.SlowDFSDiscoverTimeIterator;
  * Sources: TOPLAS article, Muchnick book
  */
 
-public abstract class Dominators<T> {
+public abstract class Dominators<T> implements Serializable{
   static final boolean DEBUG = false;
 
   /**
@@ -450,7 +451,7 @@ public abstract class Dominators<T> {
   /**
    * LOOK-ASIDE TABLE FOR PER-NODE STATE AND ITS ACCESSORS
    */
-  protected final class DominatorInfo {
+  protected final class DominatorInfo implements Serializable{
     /*
      * The result of this computation: the immediate dominator of this node
      */

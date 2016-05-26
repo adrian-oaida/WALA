@@ -10,6 +10,7 @@
  *****************************************************************************/
 package com.ibm.wala.cast.ipa.callgraph;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -24,7 +25,7 @@ import com.ibm.wala.ssa.SSAAbstractInvokeInstruction;
 import com.ibm.wala.types.TypeReference;
 import com.ibm.wala.util.collections.HashSetFactory;
 
-public abstract class ScriptEntryPoints implements Iterable<Entrypoint> {
+public abstract class ScriptEntryPoints implements Iterable<Entrypoint>, Serializable {
 
   private final IClassHierarchy cha;
 

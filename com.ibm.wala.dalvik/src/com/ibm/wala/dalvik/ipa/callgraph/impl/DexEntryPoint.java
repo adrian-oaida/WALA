@@ -46,6 +46,7 @@
  */
 package com.ibm.wala.dalvik.ipa.callgraph.impl;
 
+import java.io.Serializable;
 import java.util.logging.Logger;
 
 import com.ibm.wala.classLoader.IMethod;
@@ -55,11 +56,18 @@ import com.ibm.wala.ipa.cha.IClassHierarchyDweller;
 import com.ibm.wala.types.MethodReference;
 import com.ibm.wala.types.TypeReference;
 
-public class DexEntryPoint extends DefaultEntrypoint implements IClassHierarchyDweller {
+public class DexEntryPoint extends DefaultEntrypoint implements IClassHierarchyDweller, Serializable {
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1507180456575601512L;
 /** BEGIN Custom change */    
     private IClassHierarchy cha;
 /** END Custom change */
 
+    public DexEntryPoint(){
+    	super();
+    }
 	public DexEntryPoint(IMethod method, IClassHierarchy cha) {
 		super(method, cha);
 /** BEGIN Custom change */        
@@ -67,7 +75,7 @@ public class DexEntryPoint extends DefaultEntrypoint implements IClassHierarchyD
 /** END Custom change */        
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public DexEntryPoint(MethodReference method, IClassHierarchy cha) {
 		super(method, cha);
 /** BEGIN Custom change */        

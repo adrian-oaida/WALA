@@ -10,6 +10,7 @@
  *****************************************************************************/
 package com.ibm.wala.cast.ir.ssa;
 
+import java.io.Serializable;
 import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -47,7 +48,7 @@ import com.ibm.wala.util.graph.dominators.DominanceFrontiers;
  * @author Julian dolby (dolby@us.ibm.com)
  * 
  */
-public abstract class AbstractSSAConversion {
+public abstract class AbstractSSAConversion implements Serializable{
 
   protected abstract int getNumberOfDefs(SSAInstruction inst);
 

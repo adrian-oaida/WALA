@@ -38,6 +38,9 @@ public abstract class Entrypoint implements BytecodeConstants {
    */
   protected final IMethod method;
 
+  public Entrypoint(){
+    method = null;
+  }
   /**
    * @param method the method to be called for this entrypoint
    */

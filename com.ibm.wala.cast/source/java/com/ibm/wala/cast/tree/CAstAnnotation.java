@@ -10,9 +10,10 @@
  *******************************************************************************/
 package com.ibm.wala.cast.tree;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public interface CAstAnnotation {
+public interface CAstAnnotation extends Serializable{
 
   CAstType getType();
   
