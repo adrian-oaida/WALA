@@ -36,7 +36,12 @@ public class SSAStoreIndirectInstruction extends SSAInstruction {
     this.rval = rval;
     this.pointeeType = pointeeType;
   }
-
+  public int getFromVal(){
+    return rval;
+  }
+  public int getToVal(){
+    return addressVal;
+  }
   public TypeReference getPointeeType() {
     return pointeeType;
   }

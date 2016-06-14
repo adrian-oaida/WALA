@@ -226,7 +226,7 @@ public final class MethodReference extends MemberReference {
   public int getNumberOfParameters() {
     return parameterTypes == null ? 0 : parameterTypes.length;
   }
-
+  
   /**
    * An identifier/selector for methods.
    */

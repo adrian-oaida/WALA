@@ -51,6 +51,7 @@
  */
 package com.ibm.wala.dalvik.dex.instructions;
 
+
 import org.jf.dexlib.Code.Opcode;
 import org.jf.dexlib.Code.Format.ArrayDataPseudoInstruction;
 
@@ -63,7 +64,6 @@ public class ArrayFill extends Instruction {
     public final int array;
     public final int tableAddressOffset;
     public int registerIndex;
-    //todo , this is going to come back and bite me in the ***
     transient private ArrayDataPseudoInstruction table;
     public final TypeReference type;
 

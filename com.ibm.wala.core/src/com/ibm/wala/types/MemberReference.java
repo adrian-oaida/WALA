@@ -57,6 +57,13 @@ public abstract class MemberReference implements Serializable{
   @Override
   public final boolean equals(Object other) {
     // These are canonical
+    if(this == other)
+      return true;
+    if(this.getClass().equals(other.getClass())){
+      MemberReference mr = (MemberReference)other;
+      return this.hash == mr.hash && this.declaringClass.equals(mr.declaringClass) && this.name.equals(mr.name);
+      
+    }
     return this == other;
   }
 
